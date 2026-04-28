@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
+
+# JWT validation + public paths.
+# In production, override `gateway.jwt.secret` via env var and use a long random secret.
+gateway:
+  jwt:
+    secret: ${JWT_SECRET:change-me-please-this-is-a-development-only-jwt-secret-32+chars}
+    clock-skew-seconds: 30
+    user-id-claim: uid
+    username-claim: sub
+    role-claim: role
+  public-paths:
+    - /api/auth/
+    - /v3/api-docs
+    - /swagger-ui
+    - /actuator/health
+    - /actuator/info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,gateway
+  endpoint:
+    health:
+      show-details: when_authorized
+
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+    com.techlab.ecommerce.gateway: DEBUG
+  pattern:
+    level: "%5p [%X{requestId:-}]"
