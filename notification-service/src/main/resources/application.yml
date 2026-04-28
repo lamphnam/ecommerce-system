@@ -26,8 +26,8 @@ spring:
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
     port: ${RABBITMQ_PORT:5672}
-    username: ${RABBITMQ_USER:guest}
-    password: ${RABBITMQ_PASS:guest}
+    username: ${RABBITMQ_USER:techlab}
+    password: ${RABBITMQ_PASS:techlab}
     publisher-confirm-type: correlated
     publisher-returns: true
     listener:

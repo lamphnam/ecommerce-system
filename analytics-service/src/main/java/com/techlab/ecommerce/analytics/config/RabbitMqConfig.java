@@ -1,20 +1,78 @@
 package com.techlab.ecommerce.analytics.config;
 
+import com.techlab.ecommerce.common.messaging.constants.ExchangeNames;
+import com.techlab.ecommerce.common.messaging.constants.QueueNames;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.Binding.DestinationType;
+import org.springframework.amqp.core.Declarables;
+import org.springframework.amqp.core.ExchangeBuilder;
+import org.springframework.amqp.core.QueueBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Analytics Service exchange/queue/binding declarations.
+ * Analytics Service RabbitMQ topology.
  *
- * <p>Populated in <strong>Phase 4</strong> of the implementation roadmap.
+ * <p>Pure fan-out consumer. Binds {@code analytics.events.q} with the {@code #}
+ * wildcard against every business exchange so every event in the system is
+ * captured. Producers never block on this queue (manual ack + dedicated
+ * thread pool will be wired up in Phase 9).
  *
+ * <h3>Publishes</h3>
+ * Nothing.
+ *
+ * <h3>Consumes</h3>
  * <ul>
- *   <li>Publishes nothing.</li>
- *   <li>Consumes from queue {@code analytics.events.q}, fan-out from
- *       {@code order.exchange}, {@code payment.exchange}, {@code inventory.exchange},
- *       {@code notification.exchange}, {@code analytics.exchange} via wildcard bindings (#).</li>
- *   <li>Dedicated thread pool with high prefetch so analytics never blocks the critical path.</li>
+ *   <li>{@code analytics.events.q} ← {@code order.exchange / #}</li>
+ *   <li>{@code analytics.events.q} ← {@code payment.exchange / #}</li>
+ *   <li>{@code analytics.events.q} ← {@code inventory.exchange / #}</li>
+ *   <li>{@code analytics.events.q} ← {@code notification.exchange / #}</li>
+ *   <li>{@code analytics.events.q} ← {@code analytics.exchange / #}</li>
  * </ul>
  */
 @Configuration
 public class RabbitMqConfig {
+
+    private static final String DLX_ARG = "x-dead-letter-exchange";
+    private static final String DLK_ARG = "x-dead-letter-routing-key";
+    private static final String CATCH_ALL = "#";
+
+    @Bean
+    Declarables analyticsExchanges() {
+        return new Declarables(
+                ExchangeBuilder.topicExchange(ExchangeNames.ORDER).durable(true).build(),
+                ExchangeBuilder.topicExchange(ExchangeNames.PAYMENT).durable(true).build(),
+                ExchangeBuilder.topicExchange(ExchangeNames.INVENTORY).durable(true).build(),
+                ExchangeBuilder.topicExchange(ExchangeNames.NOTIFICATION).durable(true).build(),
+                ExchangeBuilder.topicExchange(ExchangeNames.ANALYTICS).durable(true).build(),
+                ExchangeBuilder.topicExchange(ExchangeNames.ANALYTICS_DLX).durable(true).build());
+    }
+
+    @Bean
+    Declarables analyticsConsumerQueues() {
+        return new Declarables(
+                QueueBuilder.durable(QueueNames.ANALYTICS_EVENTS)
+                        .withArgument(DLX_ARG, ExchangeNames.ANALYTICS_DLX)
+                        .withArgument(DLK_ARG, QueueNames.ANALYTICS_EVENTS_DLQ)
+                        .build(),
+                QueueBuilder.durable(QueueNames.ANALYTICS_EVENTS_DLQ).build());
+    }
+
+    @Bean
+    Declarables analyticsBindings() {
+        return new Declarables(
+                new Binding(QueueNames.ANALYTICS_EVENTS, DestinationType.QUEUE,
+                        ExchangeNames.ORDER, CATCH_ALL, null),
+                new Binding(QueueNames.ANALYTICS_EVENTS, DestinationType.QUEUE,
+                        ExchangeNames.PAYMENT, CATCH_ALL, null),
+                new Binding(QueueNames.ANALYTICS_EVENTS, DestinationType.QUEUE,
+                        ExchangeNames.INVENTORY, CATCH_ALL, null),
+                new Binding(QueueNames.ANALYTICS_EVENTS, DestinationType.QUEUE,
+                        ExchangeNames.NOTIFICATION, CATCH_ALL, null),
+                new Binding(QueueNames.ANALYTICS_EVENTS, DestinationType.QUEUE,
+                        ExchangeNames.ANALYTICS, CATCH_ALL, null),
+
+                new Binding(QueueNames.ANALYTICS_EVENTS_DLQ, DestinationType.QUEUE,
+                        ExchangeNames.ANALYTICS_DLX, QueueNames.ANALYTICS_EVENTS_DLQ, null));
+    }
 }

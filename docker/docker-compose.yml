@@ -1,0 +1,131 @@
+name: techlab-ecommerce
+
+# Phase 4 infra-only stack: RabbitMQ (with delayed-message plugin) + 5 Postgres
+# instances, one per service. Run the Spring Boot services on the host via
+# `mvnw spring-boot:run`. The full stack (services included) is built in Phase 11.
+
+services:
+  rabbitmq:
+    build:
+      context: ./rabbitmq
+    image: techlab/rabbitmq:3.13-delayed
+    container_name: techlab-rabbitmq
+    hostname: techlab-rabbitmq
+    ports:
+      - "5672:5672"     # AMQP
+      - "15672:15672"   # Management UI
+      - "15692:15692"   # Prometheus metrics
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-techlab}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS:-techlab}
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    networks: [techlab]
+
+  postgres-order:
+    image: postgres:16-alpine
+    container_name: techlab-postgres-order
+    environment:
+      POSTGRES_DB: order_db
+      POSTGRES_USER: ${DB_USER:-techlab}
+      POSTGRES_PASSWORD: ${DB_PASS:-techlab}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-order-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-techlab} -d order_db"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    networks: [techlab]
+
+  postgres-payment:
+    image: postgres:16-alpine
+    container_name: techlab-postgres-payment
+    environment:
+      POSTGRES_DB: payment_db
+      POSTGRES_USER: ${DB_USER:-techlab}
+      POSTGRES_PASSWORD: ${DB_PASS:-techlab}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-payment-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-techlab} -d payment_db"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    networks: [techlab]
+
+  postgres-inventory:
+    image: postgres:16-alpine
+    container_name: techlab-postgres-inventory
+    environment:
+      POSTGRES_DB: inventory_db
+      POSTGRES_USER: ${DB_USER:-techlab}
+      POSTGRES_PASSWORD: ${DB_PASS:-techlab}
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres-inventory-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-techlab} -d inventory_db"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    networks: [techlab]
+
+  postgres-notification:
+    image: postgres:16-alpine
+    container_name: techlab-postgres-notification
+    environment:
+      POSTGRES_DB: notification_db
+      POSTGRES_USER: ${DB_USER:-techlab}
+      POSTGRES_PASSWORD: ${DB_PASS:-techlab}
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres-notification-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-techlab} -d notification_db"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    networks: [techlab]
+
+  postgres-analytics:
+    image: postgres:16-alpine
+    container_name: techlab-postgres-analytics
+    environment:
+      POSTGRES_DB: analytics_db
+      POSTGRES_USER: ${DB_USER:-techlab}
+      POSTGRES_PASSWORD: ${DB_PASS:-techlab}
+    ports:
+      - "5436:5432"
+    volumes:
+      - postgres-analytics-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-techlab} -d analytics_db"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    networks: [techlab]
+
+volumes:
+  rabbitmq-data:
+  postgres-order-data:
+  postgres-payment-data:
+  postgres-inventory-data:
+  postgres-notification-data:
+  postgres-analytics-data:
+
+networks:
+  techlab:
+    name: techlab-net
+    driver: bridge
