@@ -2,6 +2,27 @@ spring:
   application:
     name: api-gateway
 
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5437/gateway_db}
+    username: ${DB_USER:techlab}
+    password: ${DB_PASS:techlab}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        format_sql: true
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
 server:
   port: ${SERVER_PORT:8080}
   shutdown: graceful
@@ -11,6 +32,7 @@ server:
 gateway:
   jwt:
     secret: ${JWT_SECRET:change-me-please-this-is-a-development-only-jwt-secret-32+chars}
+    expiration-seconds: ${JWT_EXPIRATION_SECONDS:3600}
     clock-skew-seconds: 30
     user-id-claim: uid
     username-claim: sub
@@ -19,6 +41,7 @@ gateway:
     - /api/auth/
     - /v3/api-docs
     - /swagger-ui
+    - /swagger-ui.html
     - /actuator/health
     - /actuator/info
   # Downstream service URLs. Defaults match the localhost dev ports so a plain

@@ -20,6 +20,7 @@ public class GatewayProperties {
             "/api/auth/",
             "/v3/api-docs",
             "/swagger-ui",
+            "/swagger-ui.html",
             "/actuator/health",
             "/actuator/info"
     );
@@ -32,6 +33,8 @@ public class GatewayProperties {
     @Setter
     public static class Jwt {
         private String secret;
+        /** Token lifetime in seconds for demo tokens issued by the gateway. */
+        private long expirationSeconds = 3600;
         /** Allowed clock skew in seconds when validating expiry. */
         private long clockSkewSeconds = 30;
         private String userIdClaim = "uid";
