@@ -1,9 +1,9 @@
-# Local Infrastructure (Phase 4)
+# Local Infrastructure
 
 This stack provisions everything the services need to run **except** the services themselves:
 
 - **RabbitMQ 3.13** with the `rabbitmq_delayed_message_exchange`, `rabbitmq_management`, and `rabbitmq_prometheus` plugins enabled (custom image built from `./rabbitmq/Dockerfile`).
-- **5 PostgreSQL 16 instances**, one per service, each on its own host port.
+- **6 PostgreSQL 16 instances**, one per service/gateway, each on its own host port.
 
 The Spring Boot apps run on the host via `mvnw spring-boot:run` for the dev loop. The full bundled stack (services + infra in one compose file) is delivered in Phase 11.
 
@@ -30,8 +30,9 @@ docker/
 | postgres-inventory   | 5434      | db `inventory_db`           |
 | postgres-notification| 5435      | db `notification_db`        |
 | postgres-analytics   | 5436      | db `analytics_db`           |
+| postgres-gateway     | 5437      | db `gateway_db`             |
 
-These match the port assumptions in each service's `application.yml`.
+These match the port assumptions in each service/gateway `application.yml`.
 
 ## Default credentials
 
@@ -39,12 +40,12 @@ Defined inline in `docker-compose.yml` via shell defaults (`${VAR:-fallback}`):
 
 | Variable        | Default    | Used by         |
 | --------------- | ---------- | --------------- |
-| `DB_USER`       | `techlab`  | all 5 Postgres  |
-| `DB_PASS`       | `techlab`  | all 5 Postgres  |
+| `DB_USER`       | `techlab`  | all 6 Postgres  |
+| `DB_PASS`       | `techlab`  | all 6 Postgres  |
 | `RABBITMQ_USER` | `techlab`  | RabbitMQ        |
 | `RABBITMQ_PASS` | `techlab`  | RabbitMQ        |
 
-The five services default to **DB user/pass `techlab/techlab`** and **RabbitMQ user/pass `techlab/techlab`** in their `application.yml`. Either:
+The five services plus api-gateway default to **DB user/pass `techlab/techlab`**. Services using RabbitMQ default to **RabbitMQ user/pass `techlab/techlab`** in their `application.yml`. Either:
 
 - Override the broker creds when starting a service (recommended):
   ```powershell
@@ -73,7 +74,7 @@ The `--build` is needed once so the custom RabbitMQ image is built (delayed-mess
 docker compose -f docker/docker-compose.yml ps
 ```
 
-All 6 containers should show `healthy` within ~30s. The healthcheck for Postgres uses `pg_isready`; RabbitMQ uses `rabbitmq-diagnostics ping`.
+All 7 containers should show `healthy` within ~30s. The healthcheck for Postgres uses `pg_isready`; RabbitMQ uses `rabbitmq-diagnostics ping`.
 
 **Tail logs:**
 

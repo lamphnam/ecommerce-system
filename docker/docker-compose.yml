@@ -1,8 +1,9 @@
 name: techlab-ecommerce
 
-# Phase 4 infra-only stack: RabbitMQ (with delayed-message plugin) + 5 Postgres
-# instances, one per service. Run the Spring Boot services on the host via
-# `mvnw spring-boot:run`. The full stack (services included) is built in Phase 11.
+# Infra-only stack: RabbitMQ (with delayed-message plugin) + Postgres instances
+# per service (including api-gateway demo auth DB). Run the Spring Boot services
+# on the host via `mvnw spring-boot:run`. The full stack (services included) is
+# built in Phase 11.
 
 services:
   rabbitmq:
@@ -24,6 +25,24 @@ services:
       test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
       interval: 10s
       timeout: 5s
+      retries: 12
+    networks: [techlab]
+
+  postgres-gateway:
+    image: postgres:16-alpine
+    container_name: techlab-postgres-gateway
+    environment:
+      POSTGRES_DB: gateway_db
+      POSTGRES_USER: ${DB_USER:-techlab}
+      POSTGRES_PASSWORD: ${DB_PASS:-techlab}
+    ports:
+      - "5437:5432"
+    volumes:
+      - postgres-gateway-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-techlab} -d gateway_db"]
+      interval: 5s
+      timeout: 3s
       retries: 12
     networks: [techlab]
 
@@ -119,6 +138,7 @@ services:
 
 volumes:
   rabbitmq-data:
+  postgres-gateway-data:
   postgres-order-data:
   postgres-payment-data:
   postgres-inventory-data:
