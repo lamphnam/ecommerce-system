@@ -2,18 +2,21 @@ package com.techlab.ecommerce.gateway.security;
 
 import com.techlab.ecommerce.common.exception.UnauthorizedException;
 import com.techlab.ecommerce.gateway.config.GatewayProperties;
+import com.techlab.ecommerce.gateway.auth.entity.GatewayUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
+import java.util.Date;
 
 /**
- * Validates and parses JWT tokens issued by the (out-of-scope) auth service.
+ * Issues, validates, and parses demo JWT tokens for api-gateway.
  * Returns the parsed claims so {@link JwtAuthFilter} can inject the
  * {@code X-User-*} headers downstream.
  */
@@ -30,6 +33,25 @@ public class JwtService {
             throw new IllegalStateException("gateway.jwt.secret must be configured");
         }
         this.signingKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(toBase64(this.jwtConfig.getSecret())));
+    }
+
+    public String issueToken(GatewayUser user) {
+        Date now = new Date();
+        Date expiry = new Date(now.getTime() + jwtConfig.getExpirationSeconds() * 1000L);
+        var builder = Jwts.builder()
+                .setSubject(user.getUsername())
+                .setIssuedAt(now)
+                .setExpiration(expiry)
+                .claim(jwtConfig.getUserIdClaim(), user.getId())
+                .claim(jwtConfig.getRoleClaim(), user.getRole().name());
+        if (!"sub".equals(jwtConfig.getUsernameClaim())) {
+            builder.claim(jwtConfig.getUsernameClaim(), user.getUsername());
+        }
+        return builder.signWith(signingKey, SignatureAlgorithm.HS256).compact();
+    }
+
+    public long expiresInSeconds() {
+        return jwtConfig.getExpirationSeconds();
     }
 
     public Claims parse(String token) {
