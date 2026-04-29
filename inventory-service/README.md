@@ -10,23 +10,33 @@ Inventory Service for the Techlab e-commerce platform. Owns product stock, perfo
 
 PostgreSQL `inventory_db` on port `5434`.
 
-## REST APIs (target)
+## REST APIs
 
-- `GET /api/inventory/products/{id}` — read stock.
-- `POST /api/inventory/products` (admin) — create product.
-- `PATCH /api/inventory/products/{id}/stock` (admin) — adjust stock.
+- `POST /api/inventory/products` — create a product / seed initial stock.
+- `GET /api/inventory/products/{id}` — read product stock/details.
+- `PATCH /api/inventory/products/{id}/stock` — set stock for local smoke tests.
 
 ## Events
 
-**Publishes**: `inventory.reserved`, `inventory.failed`, `inventory.released` (to `inventory.exchange`).
+**Consumes**:
 
-**Consumes**: `order.created` (reserve), `inventory.release.requested` (compensation).
+- `inventory.reserve.q` ← `order.exchange / order.created`
+- `inventory.release.q` ← `inventory.exchange / inventory.release.requested`
+
+**Publishes** (domain events only, to `inventory.exchange`):
+
+- `inventory.reserved` — all order items were reserved.
+- `inventory.failed` — at least one item could not be reserved.
+- `inventory.released` — compensation released existing reservations for an order.
 
 > Analytics observes these events automatically through the wildcard binding on `inventory.exchange`. **Do not** publish a duplicate `analytics.event` message.
 
-## Concurrency
+## Concurrency and idempotency
 
-Stock decrements use a single atomic `UPDATE ... WHERE stock >= :qty` to avoid race conditions; admin updates use optimistic `@Version` locking.
+- Stock reservation uses a single atomic `UPDATE products SET stock = stock - :qty WHERE id = :productId AND stock >= :qty` per order item to avoid overselling under concurrent requests.
+- If a later item fails, previously decremented items in the same handler are added back before publishing `inventory.failed`.
+- Inbound messages insert into `processed_events` first. A duplicate `event_id` raises `DuplicateProcessedEventException`; the listener acks and skips it.
+- Manual ack policy: success → `basicAck`; duplicate → `basicAck`; unexpected error → `basicNack(requeue=false)` so the message goes to the DLQ.
 
 ## Run locally
 
