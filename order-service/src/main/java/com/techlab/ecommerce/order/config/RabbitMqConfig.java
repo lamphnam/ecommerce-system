@@ -20,8 +20,12 @@ import org.springframework.context.annotation.Configuration;
  *   <li>{@code payment.exchange} — {@code payment.requested}</li>
  *   <li>{@code inventory.exchange} — {@code inventory.release.requested} (compensation)</li>
  *   <li>{@code notification.exchange} — {@code notification.requested}</li>
- *   <li>{@code analytics.exchange} — {@code analytics.event}</li>
  * </ul>
+ *
+ * <p>Domain events automatically reach analytics-service via wildcard bindings
+ * on {@code order.exchange}; do not publish a duplicate {@code analytics.event}
+ * message. See {@link com.techlab.ecommerce.common.messaging.constants.ExchangeNames}
+ * for the analytics strategy.
  *
  * <h3>Consumes (saga reactions)</h3>
  * <ul>
@@ -48,7 +52,6 @@ public class RabbitMqConfig {
                 ExchangeBuilder.topicExchange(ExchangeNames.PAYMENT).durable(true).build(),
                 ExchangeBuilder.topicExchange(ExchangeNames.INVENTORY).durable(true).build(),
                 ExchangeBuilder.topicExchange(ExchangeNames.NOTIFICATION).durable(true).build(),
-                ExchangeBuilder.topicExchange(ExchangeNames.ANALYTICS).durable(true).build(),
                 // DLXes for the queues this service consumes from
                 ExchangeBuilder.topicExchange(ExchangeNames.PAYMENT_DLX).durable(true).build(),
                 ExchangeBuilder.topicExchange(ExchangeNames.INVENTORY_DLX).durable(true).build());

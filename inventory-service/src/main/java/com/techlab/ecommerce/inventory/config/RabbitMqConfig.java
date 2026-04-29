@@ -17,8 +17,12 @@ import org.springframework.context.annotation.Configuration;
  * <h3>Publishes to</h3>
  * <ul>
  *   <li>{@code inventory.exchange} — {@code inventory.reserved}, {@code inventory.failed}, {@code inventory.released}</li>
- *   <li>{@code analytics.exchange} — {@code analytics.event}</li>
  * </ul>
+ *
+ * <p>Domain events reach analytics-service via wildcard bindings on
+ * {@code inventory.exchange}; do not publish a duplicate {@code analytics.event}
+ * message. See {@link com.techlab.ecommerce.common.messaging.constants.ExchangeNames}
+ * for the analytics strategy.
  *
  * <h3>Consumes</h3>
  * <ul>
@@ -41,7 +45,6 @@ public class RabbitMqConfig {
         return new Declarables(
                 ExchangeBuilder.topicExchange(ExchangeNames.ORDER).durable(true).build(),
                 ExchangeBuilder.topicExchange(ExchangeNames.INVENTORY).durable(true).build(),
-                ExchangeBuilder.topicExchange(ExchangeNames.ANALYTICS).durable(true).build(),
                 ExchangeBuilder.topicExchange(ExchangeNames.ORDER_DLX).durable(true).build(),
                 ExchangeBuilder.topicExchange(ExchangeNames.INVENTORY_DLX).durable(true).build());
     }

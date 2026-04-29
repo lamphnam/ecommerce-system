@@ -26,6 +26,8 @@ public class GatewayProperties {
 
     private Jwt jwt = new Jwt();
 
+    private Services services = new Services();
+
     @Getter
     @Setter
     public static class Jwt {
@@ -35,5 +37,22 @@ public class GatewayProperties {
         private String userIdClaim = "uid";
         private String usernameClaim = "sub";
         private String roleClaim = "role";
+    }
+
+    /**
+     * Downstream service base URLs. Defaults target localhost dev ports so a plain
+     * {@code mvnw spring-boot:run} works out of the box. Override per-environment
+     * via {@code gateway.services.*-url} or the matching env vars
+     * ({@code ORDER_SERVICE_URL}, etc.) — Docker Compose / Kubernetes will set
+     * these to the in-cluster service addresses.
+     */
+    @Getter
+    @Setter
+    public static class Services {
+        private String orderUrl = "http://localhost:8081";
+        private String paymentUrl = "http://localhost:8082";
+        private String inventoryUrl = "http://localhost:8083";
+        private String notificationUrl = "http://localhost:8084";
+        private String analyticsUrl = "http://localhost:8085";
     }
 }

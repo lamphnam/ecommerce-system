@@ -31,7 +31,15 @@ public final class RoutingKeys {
     public static final String NOTIFICATION_SENT = "notification.sent";
     public static final String NOTIFICATION_FAILED = "notification.failed";
 
-    // Analytics fan-out (wildcard binding handled by analytics-service)
+    /**
+     * Reserved routing key for future analytics-internal events on
+     * {@link com.techlab.ecommerce.common.messaging.constants.ExchangeNames#ANALYTICS}.
+     *
+     * <p>Domain services should <strong>not</strong> publish messages with this
+     * key. analytics-service collects business events directly from the
+     * domain exchanges (order/payment/inventory/notification) via wildcard
+     * bindings — see {@link ExchangeNames} for the full strategy.
+     */
     public static final String ANALYTICS_EVENT = "analytics.event";
 
     // DLQ suffix convention

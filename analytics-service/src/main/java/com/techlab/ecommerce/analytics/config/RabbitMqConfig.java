@@ -13,21 +13,31 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Analytics Service RabbitMQ topology.
  *
- * <p>Pure fan-out consumer. Binds {@code analytics.events.q} with the {@code #}
- * wildcard against every business exchange so every event in the system is
- * captured. Producers never block on this queue (manual ack + dedicated
- * thread pool will be wired up in Phase 9).
+ * <p>Pure fan-out consumer. Analytics is collected directly from the
+ * <em>domain exchanges</em> via {@code #} wildcard bindings, so every business
+ * event recorded by Order/Payment/Inventory/Notification flows into
+ * {@code analytics.events.q} without any extra publish on the producing side.
+ * Domain services therefore must <strong>not</strong> emit a separate
+ * {@code analytics.event} message for the same fact — see
+ * {@link com.techlab.ecommerce.common.messaging.constants.ExchangeNames} for the
+ * full strategy.
+ *
+ * <p>{@code analytics.exchange} is owned by this service and reserved for future
+ * analytics-internal events (re-emitted aggregates, replays). The wildcard
+ * binding from it is kept so that, if such events are introduced later, no
+ * topology change is required. Producers never block on this queue (manual ack
+ * + dedicated thread pool will be wired up in Phase 9).
  *
  * <h3>Publishes</h3>
  * Nothing.
  *
  * <h3>Consumes</h3>
  * <ul>
- *   <li>{@code analytics.events.q} ← {@code order.exchange / #}</li>
- *   <li>{@code analytics.events.q} ← {@code payment.exchange / #}</li>
- *   <li>{@code analytics.events.q} ← {@code inventory.exchange / #}</li>
- *   <li>{@code analytics.events.q} ← {@code notification.exchange / #}</li>
- *   <li>{@code analytics.events.q} ← {@code analytics.exchange / #}</li>
+ *   <li>{@code analytics.events.q} ← {@code order.exchange / #} (domain)</li>
+ *   <li>{@code analytics.events.q} ← {@code payment.exchange / #} (domain)</li>
+ *   <li>{@code analytics.events.q} ← {@code inventory.exchange / #} (domain)</li>
+ *   <li>{@code analytics.events.q} ← {@code notification.exchange / #} (domain)</li>
+ *   <li>{@code analytics.events.q} ← {@code analytics.exchange / #} (reserved, internal)</li>
  * </ul>
  */
 @Configuration

@@ -16,9 +16,11 @@ PostgreSQL `notification_db` on port `5435`.
 
 ## Events
 
-**Publishes**: `analytics.event` (delivery status).
+**Publishes**: `notification.sent`, `notification.failed` (delivery status, to `notification.exchange`).
 
 **Consumes**: `notification.requested`.
+
+> Delivery-status events reach analytics-service automatically through the wildcard binding on `notification.exchange`. **Do not** publish a duplicate `analytics.event` message.
 
 ## Run locally
 

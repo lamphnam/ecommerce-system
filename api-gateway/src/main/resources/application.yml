@@ -21,6 +21,15 @@ gateway:
     - /swagger-ui
     - /actuator/health
     - /actuator/info
+  # Downstream service URLs. Defaults match the localhost dev ports so a plain
+  # `mvnw spring-boot:run` per service works without env vars. Override these
+  # in docker-compose / Kubernetes via the listed environment variables.
+  services:
+    order-url: ${ORDER_SERVICE_URL:http://localhost:8081}
+    payment-url: ${PAYMENT_SERVICE_URL:http://localhost:8082}
+    inventory-url: ${INVENTORY_SERVICE_URL:http://localhost:8083}
+    notification-url: ${NOTIFICATION_SERVICE_URL:http://localhost:8084}
+    analytics-url: ${ANALYTICS_SERVICE_URL:http://localhost:8085}
 
 management:
   endpoints:

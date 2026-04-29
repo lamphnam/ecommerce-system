@@ -17,8 +17,12 @@ import org.springframework.context.annotation.Configuration;
  * <h3>Publishes to</h3>
  * <ul>
  *   <li>{@code payment.exchange} — {@code payment.succeeded}, {@code payment.failed}</li>
- *   <li>{@code analytics.exchange} — {@code analytics.event}</li>
  * </ul>
+ *
+ * <p>Domain events reach analytics-service via wildcard bindings on
+ * {@code payment.exchange}; do not publish a duplicate {@code analytics.event}
+ * message. See {@link com.techlab.ecommerce.common.messaging.constants.ExchangeNames}
+ * for the analytics strategy.
  *
  * <h3>Consumes</h3>
  * <ul>
@@ -35,7 +39,6 @@ public class RabbitMqConfig {
     Declarables paymentExchanges() {
         return new Declarables(
                 ExchangeBuilder.topicExchange(ExchangeNames.PAYMENT).durable(true).build(),
-                ExchangeBuilder.topicExchange(ExchangeNames.ANALYTICS).durable(true).build(),
                 ExchangeBuilder.topicExchange(ExchangeNames.PAYMENT_DLX).durable(true).build());
     }
 

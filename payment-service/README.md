@@ -17,9 +17,11 @@ PostgreSQL `payment_db` on port `5433`.
 
 ## Events
 
-**Publishes**: `payment.succeeded`, `payment.failed`, `analytics.event`.
+**Publishes**: `payment.succeeded`, `payment.failed` (to `payment.exchange`).
 
 **Consumes**: `payment.requested`.
+
+> Analytics observes these events automatically through the wildcard binding on `payment.exchange`. **Do not** publish a duplicate `analytics.event` message.
 
 ## Simulator knobs (experiment plan)
 

@@ -18,9 +18,11 @@ PostgreSQL `order_db`. Migrations under `src/main/resources/db/migration` (Flywa
 
 ## Events
 
-**Publishes**: `order.created`, `payment.requested`, `inventory.release.requested`, `notification.requested`, `analytics.event`, `order.confirmed`, `order.failed`, `order.cancelled`.
+**Publishes**: `order.created`, `order.confirmed`, `order.failed`, `order.cancelled` (to `order.exchange`); `payment.requested` (to `payment.exchange`); `inventory.release.requested` (to `inventory.exchange`, compensation); `notification.requested` (to `notification.exchange`).
 
 **Consumes**: `inventory.reserved`, `inventory.failed`, `payment.succeeded`, `payment.failed`.
+
+> Analytics observes these events automatically through wildcard bindings on the domain exchanges. **Do not** publish a duplicate `analytics.event` message.
 
 ## Package layout (target)
 

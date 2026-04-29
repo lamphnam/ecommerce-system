@@ -18,9 +18,11 @@ PostgreSQL `inventory_db` on port `5434`.
 
 ## Events
 
-**Publishes**: `inventory.reserved`, `inventory.failed`, `inventory.released`, `analytics.event`.
+**Publishes**: `inventory.reserved`, `inventory.failed`, `inventory.released` (to `inventory.exchange`).
 
 **Consumes**: `order.created` (reserve), `inventory.release.requested` (compensation).
+
+> Analytics observes these events automatically through the wildcard binding on `inventory.exchange`. **Do not** publish a duplicate `analytics.event` message.
 
 ## Concurrency
 

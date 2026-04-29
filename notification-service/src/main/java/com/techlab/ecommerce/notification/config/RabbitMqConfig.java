@@ -16,8 +16,15 @@ import org.springframework.context.annotation.Configuration;
  *
  * <h3>Publishes to</h3>
  * <ul>
- *   <li>{@code analytics.exchange} — {@code analytics.event} (delivery status)</li>
+ *   <li>{@code notification.exchange} — {@code notification.sent}, {@code notification.failed}
+ *       (delivery status emitted after handling each {@code notification.requested})</li>
  * </ul>
+ *
+ * <p>Delivery-status events reach analytics-service via the wildcard binding on
+ * {@code notification.exchange}; do not publish a duplicate
+ * {@code analytics.event} message. See
+ * {@link com.techlab.ecommerce.common.messaging.constants.ExchangeNames} for the
+ * analytics strategy.
  *
  * <h3>Consumes</h3>
  * <ul>
@@ -34,7 +41,6 @@ public class RabbitMqConfig {
     Declarables notificationExchanges() {
         return new Declarables(
                 ExchangeBuilder.topicExchange(ExchangeNames.NOTIFICATION).durable(true).build(),
-                ExchangeBuilder.topicExchange(ExchangeNames.ANALYTICS).durable(true).build(),
                 ExchangeBuilder.topicExchange(ExchangeNames.NOTIFICATION_DLX).durable(true).build());
     }
 

@@ -44,7 +44,7 @@ Defined inline in `docker-compose.yml` via shell defaults (`${VAR:-fallback}`):
 | `RABBITMQ_USER` | `techlab`  | RabbitMQ        |
 | `RABBITMQ_PASS` | `techlab`  | RabbitMQ        |
 
-The five services default to **DB user/pass `techlab/techlab`** and **RabbitMQ user/pass `guest/guest`** in their `application.yml`. Either:
+The five services default to **DB user/pass `techlab/techlab`** and **RabbitMQ user/pass `techlab/techlab`** in their `application.yml`. Either:
 
 - Override the broker creds when starting a service (recommended):
   ```powershell
@@ -52,7 +52,7 @@ The five services default to **DB user/pass `techlab/techlab`** and **RabbitMQ u
   ```
 - Or override the compose values:
   ```powershell
-  $env:RABBITMQ_USER="guest"; $env:RABBITMQ_PASS="guest"; docker compose -f docker/docker-compose.yml up -d
+  $env:RABBITMQ_USER="techlab"; $env:RABBITMQ_PASS="techlab"; docker compose -f docker/docker-compose.yml up -d
   ```
 
 ## Usage

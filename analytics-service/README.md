@@ -19,7 +19,15 @@ PostgreSQL `analytics_db` on port `5436`.
 
 **Publishes**: nothing.
 
-**Consumes**: every business event via `analytics.events.q` (wildcard bindings to `order.exchange`, `payment.exchange`, `inventory.exchange`, `notification.exchange`, `analytics.exchange`).
+**Consumes**: every business event via `analytics.events.q`. The queue is bound with the `#` wildcard to each **domain exchange** so it receives the producing service's normal domain events directly:
+
+- `order.exchange` (order lifecycle)
+- `payment.exchange` (payment lifecycle)
+- `inventory.exchange` (stock lifecycle)
+- `notification.exchange` (delivery status)
+- `analytics.exchange` *(reserved)* — owned by this service for any future analytics-internal events; domain services must **not** publish here.
+
+This avoids duplicate analytics records: each domain event is captured exactly once, by its source exchange. There is no separate `analytics.event` fan-out from producers.
 
 ## Run locally
 

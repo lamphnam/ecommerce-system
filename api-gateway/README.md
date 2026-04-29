@@ -14,13 +14,15 @@ Downstream services do **not** validate JWT; they trust the gateway boundary via
 
 ## Routes
 
-| Path prefix         | Target                  |
-| ------------------- | ----------------------- |
-| `/api/orders/**`        | `http://localhost:8081` (order-service) |
-| `/api/payments/**`      | `http://localhost:8082` (payment-service) |
-| `/api/inventory/**`     | `http://localhost:8083` (inventory-service) |
-| `/api/notifications/**` | `http://localhost:8084` (notification-service) |
-| `/api/analytics/**`     | `http://localhost:8085` (analytics-service) |
+| Path prefix             | Default target              | Property / env var override                   |
+| ----------------------- | --------------------------- | --------------------------------------------- |
+| `/api/orders/**`        | `http://localhost:8081`     | `gateway.services.order-url` / `ORDER_SERVICE_URL` |
+| `/api/payments/**`      | `http://localhost:8082`     | `gateway.services.payment-url` / `PAYMENT_SERVICE_URL` |
+| `/api/inventory/**`     | `http://localhost:8083`     | `gateway.services.inventory-url` / `INVENTORY_SERVICE_URL` |
+| `/api/notifications/**` | `http://localhost:8084`     | `gateway.services.notification-url` / `NOTIFICATION_SERVICE_URL` |
+| `/api/analytics/**`     | `http://localhost:8085`     | `gateway.services.analytics-url` / `ANALYTICS_SERVICE_URL` |
+
+URLs come from `GatewayProperties.Services` (bound to `gateway.services.*`). Local dev keeps the localhost defaults; docker-compose / Kubernetes set the env vars to in-cluster service addresses.
 
 ## Public paths (no JWT required)
 
