@@ -11,7 +11,8 @@ public enum PaymentErrorMessage {
     PAYMENT_ALREADY_PROCESSED(409, 3002, "Payment already processed"),
     PAYMENT_DECLINED(402, 3003, "Payment declined by provider"),
     PAYMENT_PROVIDER_UNAVAILABLE(503, 3004, "Payment provider unavailable"),
-    INVALID_PAYMENT_AMOUNT(400, 3005, "Invalid payment amount");
+    INVALID_PAYMENT_AMOUNT(400, 3005, "Invalid payment amount"),
+    INVALID_PAYMENT_EVENT(400, 3006, "Invalid payment event");
 
     private final int httpStatus;
     private final int code;
