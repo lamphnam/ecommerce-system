@@ -1,10 +1,12 @@
 package com.techlab.ecommerce.common.messaging.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.DefaultJackson2JavaTypeMapper;
+import org.springframework.amqp.support.converter.Jackson2JavaTypeMapper.TypePrecedence;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -22,6 +24,14 @@ import org.springframework.context.annotation.Primary;
  *
  * <p>Gated on {@link ConnectionFactory} so unit tests that exclude
  * {@code RabbitAutoConfiguration} are not forced to provide a stub connection factory.
+ *
+ * <h2>Cross-service type compatibility</h2>
+ * The {@link Jackson2JsonMessageConverter} is configured with
+ * {@link TypePrecedence#INFERRED}: deserialization uses the listener method's
+ * declared parameter type (e.g. {@code EventEnvelope<InventoryReservedPayload>})
+ * instead of the {@code __TypeId__} header injected by the producer. This lets
+ * each service keep its own copy of a payload DTO under its own package without
+ * the consumer side trying to load a class that lives in the producer's module.
  */
 @Configuration
 @ConditionalOnClass(RabbitTemplate.class)
@@ -33,7 +43,17 @@ public class RabbitMqCommonConfig {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        return new Jackson2JsonMessageConverter(mapper);
+
+        Jackson2JsonMessageConverter converter = new Jackson2JsonMessageConverter(mapper);
+
+        DefaultJackson2JavaTypeMapper typeMapper = new DefaultJackson2JavaTypeMapper();
+        typeMapper.setTypePrecedence(TypePrecedence.INFERRED);
+        // Permit any payload class — we trust the broker boundary and rely on the
+        // listener parameter type for binding instead of the producer's class name.
+        typeMapper.setTrustedPackages("*");
+        converter.setJavaTypeMapper(typeMapper);
+
+        return converter;
     }
 
     @Bean
