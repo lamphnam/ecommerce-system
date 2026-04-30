@@ -55,3 +55,8 @@ docs/
 mvnw
 mvnw.cmd
 .mvn/
+
+
+### Claude ###
+.claude/*
+CLAUDE.md

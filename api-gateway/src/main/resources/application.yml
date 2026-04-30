@@ -42,6 +42,7 @@ gateway:
     - /v3/api-docs
     - /swagger-ui
     - /swagger-ui.html
+    - /api-docs/
     - /actuator/health
     - /actuator/info
   # Downstream service URLs. Defaults match the localhost dev ports so a plain
@@ -69,3 +70,23 @@ logging:
     com.techlab.ecommerce.gateway: DEBUG
   pattern:
     level: "%5p [%X{requestId:-}]"
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: Gateway (Auth)
+        url: /v3/api-docs/gateway
+      - name: Order Service
+        url: /api-docs/order-service
+      - name: Payment Service
+        url: /api-docs/payment-service
+      - name: Inventory Service
+        url: /api-docs/inventory-service
+      - name: Notification Service
+        url: /api-docs/notification-service
+      - name: Analytics Service
+        url: /api-docs/analytics-service
+    urls-primary-name: Gateway (Auth)

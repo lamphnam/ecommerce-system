@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.ServerResponse;
 
-import static org.springframework.cloud.gateway.server.mvc.filter.FilterFunctions.stripPrefix;
+import static org.springframework.cloud.gateway.server.mvc.filter.FilterFunctions.setPath;
 import static org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions.route;
 import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions.http;
 import static org.springframework.web.servlet.function.RequestPredicates.path;
@@ -59,6 +59,48 @@ public class GatewayConfig {
     public RouterFunction<ServerResponse> analyticsServiceRoute(GatewayProperties properties) {
         return route("analytics-service")
                 .route(path("/api/analytics/**"), http(properties.getServices().getAnalyticsUrl()))
+                .build();
+    }
+
+    // ---- Proxied OpenAPI docs for centralized Swagger UI ----
+
+    @Bean
+    public RouterFunction<ServerResponse> orderServiceDocsRoute(GatewayProperties properties) {
+        return route("order-service-docs")
+                .route(path("/api-docs/order-service"), http(properties.getServices().getOrderUrl()))
+                .filter(setPath("/v3/api-docs"))
+                .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> paymentServiceDocsRoute(GatewayProperties properties) {
+        return route("payment-service-docs")
+                .route(path("/api-docs/payment-service"), http(properties.getServices().getPaymentUrl()))
+                .filter(setPath("/v3/api-docs"))
+                .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> inventoryServiceDocsRoute(GatewayProperties properties) {
+        return route("inventory-service-docs")
+                .route(path("/api-docs/inventory-service"), http(properties.getServices().getInventoryUrl()))
+                .filter(setPath("/v3/api-docs"))
+                .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> notificationServiceDocsRoute(GatewayProperties properties) {
+        return route("notification-service-docs")
+                .route(path("/api-docs/notification-service"), http(properties.getServices().getNotificationUrl()))
+                .filter(setPath("/v3/api-docs"))
+                .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> analyticsServiceDocsRoute(GatewayProperties properties) {
+        return route("analytics-service-docs")
+                .route(path("/api-docs/analytics-service"), http(properties.getServices().getAnalyticsUrl()))
+                .filter(setPath("/v3/api-docs"))
                 .build();
     }
 }
