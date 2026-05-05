@@ -66,3 +66,8 @@ logging:
     com.techlab.ecommerce: DEBUG
   pattern:
     level: "%5p [%X{requestId:-}]"
+
+# Downstream service URLs for the synchronous order flow (experiment baseline)
+sync:
+  inventory-url: ${SYNC_INVENTORY_URL:http://localhost:8083}
+  payment-url: ${SYNC_PAYMENT_URL:http://localhost:8082}

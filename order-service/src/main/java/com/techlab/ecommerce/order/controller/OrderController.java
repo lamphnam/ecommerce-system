@@ -8,6 +8,7 @@ import com.techlab.ecommerce.order.dto.request.CreateOrderRequest;
 import com.techlab.ecommerce.order.dto.response.OrderResponse;
 import com.techlab.ecommerce.order.enums.OrderStatus;
 import com.techlab.ecommerce.order.service.OrderService;
+import com.techlab.ecommerce.order.service.SyncOrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -44,6 +45,20 @@ public class OrderController {
     public static final String IDEMPOTENCY_KEY_HEADER = "Idempotency-Key";
 
     private final OrderService orderService;
+    private final SyncOrderService syncOrderService;
+
+    @Operation(summary = "Create a new order (synchronous baseline)",
+            description = "Same order-creation logic as the async POST, but calls inventory-service "
+                    + "and payment-service via synchronous REST. Returns 200 with final status. "
+                    + "Used ONLY for experiment comparison — NOT for production use.")
+    @PostMapping("/sync")
+    public ResponseEntity<ApiResponse<OrderResponse>> createOrderSync(
+            @Valid @RequestBody CreateOrderRequest request,
+            @RequestHeader(value = IDEMPOTENCY_KEY_HEADER, required = false) String idempotencyKey) {
+        Long userId = currentUserId();
+        OrderResponse result = syncOrderService.createOrderSync(request, userId, idempotencyKey);
+        return ResponseEntity.ok(ApiResponse.ok(result));
+    }
 
     @Operation(summary = "Create a new order",
             description = "Persists the order in PENDING state, publishes order.created, and returns immediately. "
