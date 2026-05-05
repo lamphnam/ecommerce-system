@@ -1,0 +1,617 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: experiments/07-recovery.js
+        output: json (results/07-recovery.json)
+
+     scenarios: (100.00%) 2 scenarios, 31 max VUs, 2m30s max duration (incl. graceful stop):
+              * order_flow: 5.00 iterations/s for 1m30s (maxVUs: 15-30, gracefulStop: 30s)
+              * queue_monitor: 1 looping VUs for 2m0s (exec: monitorQueue, gracefulStop: 30s)
+
+time="2026-05-05T22:20:07+07:00" level=info msg="=== RECOVERY TEST ===" source=console
+time="2026-05-05T22:20:07+07:00" level=info msg="At ~30s: STOP payment-service" source=console
+time="2026-05-05T22:20:07+07:00" level=info msg="At ~60s: RESTART payment-service" source=console
+time="2026-05-05T22:20:07+07:00" level=info msg="Watch the payment.process.q depth rise and fall." source=console
+time="2026-05-05T22:20:07+07:00" level=info msg="[2026-05-05T15:20:07.701Z] payment.process.q: 517 msgs" source=console
+time="2026-05-05T22:20:07+07:00" level=info msg="[2026-05-05T15:20:07.706Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m01.0s), 02/16 VUs, 4 complete and 0 interrupted iterations
+order_flow      [   1% ] 01/15 VUs  0m00.9s/1m30s  5.00 iters/s
+queue_monitor   [   1% ] 1 VUs      0m00.9s/2m0s  
+
+running (0m02.0s), 02/16 VUs, 9 complete and 0 interrupted iterations
+order_flow      [   2% ] 01/15 VUs  0m01.9s/1m30s  5.00 iters/s
+queue_monitor   [   2% ] 1 VUs      0m01.9s/2m0s  
+
+running (0m03.0s), 02/16 VUs, 14 complete and 0 interrupted iterations
+order_flow      [   3% ] 01/15 VUs  0m02.9s/1m30s  5.00 iters/s
+queue_monitor   [   2% ] 1 VUs      0m02.9s/2m0s  
+time="2026-05-05T22:20:10+07:00" level=info msg="[2026-05-05T15:20:10.712Z] payment.process.q: 517 msgs" source=console
+time="2026-05-05T22:20:10+07:00" level=info msg="[2026-05-05T15:20:10.716Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m04.0s), 02/16 VUs, 20 complete and 0 interrupted iterations
+order_flow      [   4% ] 01/15 VUs  0m03.9s/1m30s  5.00 iters/s
+queue_monitor   [   3% ] 1 VUs      0m03.9s/2m0s  
+
+running (0m05.0s), 02/16 VUs, 25 complete and 0 interrupted iterations
+order_flow      [   5% ] 01/15 VUs  0m04.9s/1m30s  5.00 iters/s
+queue_monitor   [   4% ] 1 VUs      0m04.9s/2m0s  
+
+running (0m06.0s), 02/16 VUs, 30 complete and 0 interrupted iterations
+order_flow      [   7% ] 01/15 VUs  0m05.9s/1m30s  5.00 iters/s
+queue_monitor   [   5% ] 1 VUs      0m05.9s/2m0s  
+time="2026-05-05T22:20:13+07:00" level=info msg="[2026-05-05T15:20:13.724Z] payment.process.q: 509 msgs" source=console
+time="2026-05-05T22:20:13+07:00" level=info msg="[2026-05-05T15:20:13.729Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m07.0s), 02/16 VUs, 36 complete and 0 interrupted iterations
+order_flow      [   8% ] 01/15 VUs  0m06.9s/1m30s  5.00 iters/s
+queue_monitor   [   6% ] 1 VUs      0m06.9s/2m0s  
+
+running (0m08.0s), 02/16 VUs, 41 complete and 0 interrupted iterations
+order_flow      [   9% ] 01/15 VUs  0m07.9s/1m30s  5.00 iters/s
+queue_monitor   [   7% ] 1 VUs      0m07.9s/2m0s  
+
+running (0m09.0s), 02/16 VUs, 46 complete and 0 interrupted iterations
+order_flow      [  10% ] 01/15 VUs  0m08.9s/1m30s  5.00 iters/s
+queue_monitor   [   7% ] 1 VUs      0m08.9s/2m0s  
+time="2026-05-05T22:20:16+07:00" level=info msg="[2026-05-05T15:20:16.733Z] payment.process.q: 509 msgs" source=console
+time="2026-05-05T22:20:16+07:00" level=info msg="[2026-05-05T15:20:16.738Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m10.0s), 02/16 VUs, 52 complete and 0 interrupted iterations
+order_flow      [  11% ] 01/15 VUs  0m09.9s/1m30s  5.00 iters/s
+queue_monitor   [   8% ] 1 VUs      0m09.9s/2m0s  
+
+running (0m11.0s), 02/16 VUs, 57 complete and 0 interrupted iterations
+order_flow      [  12% ] 01/15 VUs  0m10.9s/1m30s  5.00 iters/s
+queue_monitor   [   9% ] 1 VUs      0m10.9s/2m0s  
+
+running (0m12.0s), 02/16 VUs, 62 complete and 0 interrupted iterations
+order_flow      [  13% ] 01/15 VUs  0m11.9s/1m30s  5.00 iters/s
+queue_monitor   [  10% ] 1 VUs      0m11.9s/2m0s  
+time="2026-05-05T22:20:19+07:00" level=info msg="[2026-05-05T15:20:19.741Z] payment.process.q: 524 msgs" source=console
+time="2026-05-05T22:20:19+07:00" level=info msg="[2026-05-05T15:20:19.745Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m13.0s), 02/16 VUs, 68 complete and 0 interrupted iterations
+order_flow      [  14% ] 01/15 VUs  0m12.9s/1m30s  5.00 iters/s
+queue_monitor   [  11% ] 1 VUs      0m12.9s/2m0s  
+
+running (0m14.0s), 02/16 VUs, 73 complete and 0 interrupted iterations
+order_flow      [  15% ] 01/15 VUs  0m13.9s/1m30s  5.00 iters/s
+queue_monitor   [  12% ] 1 VUs      0m13.9s/2m0s  
+
+running (0m15.0s), 02/16 VUs, 78 complete and 0 interrupted iterations
+order_flow      [  17% ] 01/15 VUs  0m14.9s/1m30s  5.00 iters/s
+queue_monitor   [  12% ] 1 VUs      0m14.9s/2m0s  
+time="2026-05-05T22:20:22+07:00" level=info msg="[2026-05-05T15:20:22.748Z] payment.process.q: 541 msgs" source=console
+time="2026-05-05T22:20:22+07:00" level=info msg="[2026-05-05T15:20:22.751Z] inventory.reserve.q: 1 msgs" source=console
+
+running (0m16.0s), 02/16 VUs, 84 complete and 0 interrupted iterations
+order_flow      [  18% ] 01/15 VUs  0m15.9s/1m30s  5.00 iters/s
+queue_monitor   [  13% ] 1 VUs      0m15.9s/2m0s  
+
+running (0m17.0s), 02/16 VUs, 89 complete and 0 interrupted iterations
+order_flow      [  19% ] 01/15 VUs  0m16.9s/1m30s  5.00 iters/s
+queue_monitor   [  14% ] 1 VUs      0m16.9s/2m0s  
+
+running (0m18.0s), 02/16 VUs, 94 complete and 0 interrupted iterations
+order_flow      [  20% ] 01/15 VUs  0m17.9s/1m30s  5.00 iters/s
+queue_monitor   [  15% ] 1 VUs      0m17.9s/2m0s  
+time="2026-05-05T22:20:25+07:00" level=info msg="[2026-05-05T15:20:25.757Z] payment.process.q: 541 msgs" source=console
+time="2026-05-05T22:20:25+07:00" level=info msg="[2026-05-05T15:20:25.761Z] inventory.reserve.q: 1 msgs" source=console
+
+running (0m19.0s), 02/16 VUs, 100 complete and 0 interrupted iterations
+order_flow      [  21% ] 01/15 VUs  0m18.9s/1m30s  5.00 iters/s
+queue_monitor   [  16% ] 1 VUs      0m18.9s/2m0s  
+
+running (0m20.0s), 02/16 VUs, 105 complete and 0 interrupted iterations
+order_flow      [  22% ] 01/15 VUs  0m19.9s/1m30s  5.00 iters/s
+queue_monitor   [  17% ] 1 VUs      0m19.9s/2m0s  
+
+running (0m21.0s), 02/16 VUs, 110 complete and 0 interrupted iterations
+order_flow      [  23% ] 01/15 VUs  0m20.9s/1m30s  5.00 iters/s
+queue_monitor   [  17% ] 1 VUs      0m20.9s/2m0s  
+time="2026-05-05T22:20:28+07:00" level=info msg="[2026-05-05T15:20:28.765Z] payment.process.q: 554 msgs" source=console
+time="2026-05-05T22:20:28+07:00" level=info msg="[2026-05-05T15:20:28.767Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m22.0s), 02/16 VUs, 116 complete and 0 interrupted iterations
+order_flow      [  24% ] 01/15 VUs  0m21.9s/1m30s  5.00 iters/s
+queue_monitor   [  18% ] 1 VUs      0m21.9s/2m0s  
+
+running (0m23.0s), 02/16 VUs, 121 complete and 0 interrupted iterations
+order_flow      [  25% ] 01/15 VUs  0m22.9s/1m30s  5.00 iters/s
+queue_monitor   [  19% ] 1 VUs      0m22.9s/2m0s  
+
+running (0m24.0s), 02/16 VUs, 126 complete and 0 interrupted iterations
+order_flow      [  27% ] 01/15 VUs  0m23.9s/1m30s  5.00 iters/s
+queue_monitor   [  20% ] 1 VUs      0m23.9s/2m0s  
+time="2026-05-05T22:20:31+07:00" level=info msg="[2026-05-05T15:20:31.772Z] payment.process.q: 554 msgs" source=console
+time="2026-05-05T22:20:31+07:00" level=info msg="[2026-05-05T15:20:31.775Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m25.0s), 02/16 VUs, 132 complete and 0 interrupted iterations
+order_flow      [  28% ] 01/15 VUs  0m24.9s/1m30s  5.00 iters/s
+queue_monitor   [  21% ] 1 VUs      0m24.9s/2m0s  
+
+running (0m26.0s), 02/16 VUs, 137 complete and 0 interrupted iterations
+order_flow      [  29% ] 01/15 VUs  0m25.9s/1m30s  5.00 iters/s
+queue_monitor   [  22% ] 1 VUs      0m25.9s/2m0s  
+
+running (0m27.0s), 02/16 VUs, 142 complete and 0 interrupted iterations
+order_flow      [  30% ] 01/15 VUs  0m26.9s/1m30s  5.00 iters/s
+queue_monitor   [  22% ] 1 VUs      0m26.9s/2m0s  
+time="2026-05-05T22:20:34+07:00" level=info msg="[2026-05-05T15:20:34.778Z] payment.process.q: 569 msgs" source=console
+time="2026-05-05T22:20:34+07:00" level=info msg="[2026-05-05T15:20:34.781Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m28.0s), 02/16 VUs, 148 complete and 0 interrupted iterations
+order_flow      [  31% ] 01/15 VUs  0m27.9s/1m30s  5.00 iters/s
+queue_monitor   [  23% ] 1 VUs      0m27.9s/2m0s  
+
+running (0m29.0s), 02/16 VUs, 153 complete and 0 interrupted iterations
+order_flow      [  32% ] 01/15 VUs  0m28.9s/1m30s  5.00 iters/s
+queue_monitor   [  24% ] 1 VUs      0m28.9s/2m0s  
+
+running (0m30.0s), 02/16 VUs, 158 complete and 0 interrupted iterations
+order_flow      [  33% ] 01/15 VUs  0m29.9s/1m30s  5.00 iters/s
+queue_monitor   [  25% ] 1 VUs      0m29.9s/2m0s  
+time="2026-05-05T22:20:37+07:00" level=info msg="[2026-05-05T15:20:37.788Z] payment.process.q: 580 msgs" source=console
+time="2026-05-05T22:20:37+07:00" level=info msg="[2026-05-05T15:20:37.795Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m31.0s), 02/16 VUs, 164 complete and 0 interrupted iterations
+order_flow      [  34% ] 01/15 VUs  0m30.9s/1m30s  5.00 iters/s
+queue_monitor   [  26% ] 1 VUs      0m30.9s/2m0s  
+
+running (0m32.0s), 02/16 VUs, 169 complete and 0 interrupted iterations
+order_flow      [  35% ] 01/15 VUs  0m31.9s/1m30s  5.00 iters/s
+queue_monitor   [  27% ] 1 VUs      0m31.9s/2m0s  
+
+running (0m33.0s), 02/16 VUs, 174 complete and 0 interrupted iterations
+order_flow      [  37% ] 01/15 VUs  0m32.9s/1m30s  5.00 iters/s
+queue_monitor   [  27% ] 1 VUs      0m32.9s/2m0s  
+time="2026-05-05T22:20:40+07:00" level=info msg="[2026-05-05T15:20:40.800Z] payment.process.q: 580 msgs" source=console
+time="2026-05-05T22:20:40+07:00" level=info msg="[2026-05-05T15:20:40.803Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m34.0s), 06/16 VUs, 176 complete and 0 interrupted iterations
+order_flow      [  38% ] 05/15 VUs  0m33.9s/1m30s  5.00 iters/s
+queue_monitor   [  28% ] 1 VUs      0m33.9s/2m0s  
+
+running (0m35.0s), 06/16 VUs, 181 complete and 0 interrupted iterations
+order_flow      [  39% ] 05/15 VUs  0m34.9s/1m30s  5.00 iters/s
+queue_monitor   [  29% ] 1 VUs      0m34.9s/2m0s  
+
+running (0m36.0s), 04/16 VUs, 188 complete and 0 interrupted iterations
+order_flow      [  40% ] 03/15 VUs  0m35.9s/1m30s  5.00 iters/s
+queue_monitor   [  30% ] 1 VUs      0m35.9s/2m0s  
+time="2026-05-05T22:20:43+07:00" level=info msg="[2026-05-05T15:20:43.810Z] payment.process.q: 596 msgs" source=console
+time="2026-05-05T22:20:43+07:00" level=info msg="[2026-05-05T15:20:43.816Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m37.0s), 02/16 VUs, 196 complete and 0 interrupted iterations
+order_flow      [  41% ] 01/15 VUs  0m36.9s/1m30s  5.00 iters/s
+queue_monitor   [  31% ] 1 VUs      0m36.9s/2m0s  
+
+running (0m38.0s), 02/16 VUs, 201 complete and 0 interrupted iterations
+order_flow      [  42% ] 01/15 VUs  0m37.9s/1m30s  5.00 iters/s
+queue_monitor   [  32% ] 1 VUs      0m37.9s/2m0s  
+
+running (0m39.0s), 02/16 VUs, 206 complete and 0 interrupted iterations
+order_flow      [  43% ] 01/15 VUs  0m38.9s/1m30s  5.00 iters/s
+queue_monitor   [  32% ] 1 VUs      0m38.9s/2m0s  
+time="2026-05-05T22:20:46+07:00" level=info msg="[2026-05-05T15:20:46.820Z] payment.process.q: 596 msgs" source=console
+time="2026-05-05T22:20:46+07:00" level=info msg="[2026-05-05T15:20:46.826Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m40.0s), 02/16 VUs, 212 complete and 0 interrupted iterations
+order_flow      [  44% ] 01/15 VUs  0m39.9s/1m30s  5.00 iters/s
+queue_monitor   [  33% ] 1 VUs      0m39.9s/2m0s  
+
+running (0m41.0s), 02/16 VUs, 217 complete and 0 interrupted iterations
+order_flow      [  45% ] 01/15 VUs  0m40.9s/1m30s  5.00 iters/s
+queue_monitor   [  34% ] 1 VUs      0m40.9s/2m0s  
+
+running (0m42.0s), 02/16 VUs, 222 complete and 0 interrupted iterations
+order_flow      [  47% ] 01/15 VUs  0m41.9s/1m30s  5.00 iters/s
+queue_monitor   [  35% ] 1 VUs      0m41.9s/2m0s  
+time="2026-05-05T22:20:49+07:00" level=info msg="[2026-05-05T15:20:49.832Z] payment.process.q: 601 msgs" source=console
+time="2026-05-05T22:20:49+07:00" level=info msg="[2026-05-05T15:20:49.835Z] inventory.reserve.q: 3 msgs" source=console
+
+running (0m43.0s), 02/16 VUs, 228 complete and 0 interrupted iterations
+order_flow      [  48% ] 01/15 VUs  0m42.9s/1m30s  5.00 iters/s
+queue_monitor   [  36% ] 1 VUs      0m42.9s/2m0s  
+
+running (0m44.0s), 02/16 VUs, 233 complete and 0 interrupted iterations
+order_flow      [  49% ] 01/15 VUs  0m43.9s/1m30s  5.00 iters/s
+queue_monitor   [  37% ] 1 VUs      0m43.9s/2m0s  
+
+running (0m45.0s), 02/16 VUs, 238 complete and 0 interrupted iterations
+order_flow      [  50% ] 01/15 VUs  0m44.9s/1m30s  5.00 iters/s
+queue_monitor   [  37% ] 1 VUs      0m44.9s/2m0s  
+time="2026-05-05T22:20:52+07:00" level=info msg="[2026-05-05T15:20:52.839Z] payment.process.q: 630 msgs" source=console
+time="2026-05-05T22:20:52+07:00" level=info msg="[2026-05-05T15:20:52.842Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m46.0s), 02/16 VUs, 244 complete and 0 interrupted iterations
+order_flow      [  51% ] 01/15 VUs  0m45.9s/1m30s  5.00 iters/s
+queue_monitor   [  38% ] 1 VUs      0m45.9s/2m0s  
+
+running (0m47.0s), 02/16 VUs, 249 complete and 0 interrupted iterations
+order_flow      [  52% ] 01/15 VUs  0m46.9s/1m30s  5.00 iters/s
+queue_monitor   [  39% ] 1 VUs      0m46.9s/2m0s  
+
+running (0m48.0s), 02/16 VUs, 254 complete and 0 interrupted iterations
+order_flow      [  53% ] 01/15 VUs  0m47.9s/1m30s  5.00 iters/s
+queue_monitor   [  40% ] 1 VUs      0m47.9s/2m0s  
+time="2026-05-05T22:20:55+07:00" level=info msg="[2026-05-05T15:20:55.845Z] payment.process.q: 630 msgs" source=console
+time="2026-05-05T22:20:55+07:00" level=info msg="[2026-05-05T15:20:55.848Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m49.0s), 02/16 VUs, 260 complete and 0 interrupted iterations
+order_flow      [  54% ] 01/15 VUs  0m48.9s/1m30s  5.00 iters/s
+queue_monitor   [  41% ] 1 VUs      0m48.9s/2m0s  
+
+running (0m50.0s), 02/16 VUs, 265 complete and 0 interrupted iterations
+order_flow      [  55% ] 01/15 VUs  0m49.9s/1m30s  5.00 iters/s
+queue_monitor   [  42% ] 1 VUs      0m49.9s/2m0s  
+
+running (0m51.0s), 02/16 VUs, 270 complete and 0 interrupted iterations
+order_flow      [  57% ] 01/15 VUs  0m50.9s/1m30s  5.00 iters/s
+queue_monitor   [  42% ] 1 VUs      0m50.9s/2m0s  
+time="2026-05-05T22:20:58+07:00" level=info msg="[2026-05-05T15:20:58.852Z] payment.process.q: 644 msgs" source=console
+time="2026-05-05T22:20:58+07:00" level=info msg="[2026-05-05T15:20:58.854Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m52.0s), 02/16 VUs, 276 complete and 0 interrupted iterations
+order_flow      [  58% ] 01/15 VUs  0m51.9s/1m30s  5.00 iters/s
+queue_monitor   [  43% ] 1 VUs      0m51.9s/2m0s  
+
+running (0m53.0s), 02/16 VUs, 281 complete and 0 interrupted iterations
+order_flow      [  59% ] 01/15 VUs  0m52.9s/1m30s  5.00 iters/s
+queue_monitor   [  44% ] 1 VUs      0m52.9s/2m0s  
+
+running (0m54.0s), 02/16 VUs, 286 complete and 0 interrupted iterations
+order_flow      [  60% ] 01/15 VUs  0m53.9s/1m30s  5.00 iters/s
+queue_monitor   [  45% ] 1 VUs      0m53.9s/2m0s  
+time="2026-05-05T22:21:01+07:00" level=info msg="[2026-05-05T15:21:01.858Z] payment.process.q: 644 msgs" source=console
+time="2026-05-05T22:21:01+07:00" level=info msg="[2026-05-05T15:21:01.861Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m55.0s), 02/16 VUs, 292 complete and 0 interrupted iterations
+order_flow      [  61% ] 01/15 VUs  0m54.9s/1m30s  5.00 iters/s
+queue_monitor   [  46% ] 1 VUs      0m54.9s/2m0s  
+
+running (0m56.0s), 02/16 VUs, 297 complete and 0 interrupted iterations
+order_flow      [  62% ] 01/15 VUs  0m55.9s/1m30s  5.00 iters/s
+queue_monitor   [  47% ] 1 VUs      0m55.9s/2m0s  
+
+running (0m57.0s), 02/16 VUs, 302 complete and 0 interrupted iterations
+order_flow      [  63% ] 01/15 VUs  0m56.9s/1m30s  5.00 iters/s
+queue_monitor   [  47% ] 1 VUs      0m56.9s/2m0s  
+time="2026-05-05T22:21:04+07:00" level=info msg="[2026-05-05T15:21:04.864Z] payment.process.q: 658 msgs" source=console
+time="2026-05-05T22:21:04+07:00" level=info msg="[2026-05-05T15:21:04.867Z] inventory.reserve.q: 0 msgs" source=console
+
+running (0m58.0s), 02/16 VUs, 308 complete and 0 interrupted iterations
+order_flow      [  64% ] 01/15 VUs  0m57.9s/1m30s  5.00 iters/s
+queue_monitor   [  48% ] 1 VUs      0m57.9s/2m0s  
+
+running (0m59.0s), 05/16 VUs, 310 complete and 0 interrupted iterations
+order_flow      [  65% ] 04/15 VUs  0m58.9s/1m30s  5.00 iters/s
+queue_monitor   [  49% ] 1 VUs      0m58.9s/2m0s  
+
+running (1m00.0s), 07/16 VUs, 313 complete and 0 interrupted iterations
+order_flow      [  67% ] 06/15 VUs  0m59.9s/1m30s  5.00 iters/s
+queue_monitor   [  50% ] 1 VUs      0m59.9s/2m0s  
+time="2026-05-05T22:21:07+07:00" level=info msg="[2026-05-05T15:21:07.870Z] payment.process.q: 673 msgs" source=console
+time="2026-05-05T22:21:07+07:00" level=info msg="[2026-05-05T15:21:07.874Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m01.0s), 02/16 VUs, 324 complete and 0 interrupted iterations
+order_flow      [  68% ] 01/15 VUs  1m00.9s/1m30s  5.00 iters/s
+queue_monitor   [  51% ] 1 VUs      1m00.9s/2m0s  
+
+running (1m02.0s), 02/16 VUs, 329 complete and 0 interrupted iterations
+order_flow      [  69% ] 01/15 VUs  1m01.9s/1m30s  5.00 iters/s
+queue_monitor   [  52% ] 1 VUs      1m01.9s/2m0s  
+
+running (1m03.0s), 02/16 VUs, 334 complete and 0 interrupted iterations
+order_flow      [  70% ] 01/15 VUs  1m02.9s/1m30s  5.00 iters/s
+queue_monitor   [  52% ] 1 VUs      1m02.9s/2m0s  
+time="2026-05-05T22:21:10+07:00" level=info msg="[2026-05-05T15:21:10.877Z] payment.process.q: 673 msgs" source=console
+time="2026-05-05T22:21:10+07:00" level=info msg="[2026-05-05T15:21:10.880Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m04.0s), 02/16 VUs, 340 complete and 0 interrupted iterations
+order_flow      [  71% ] 01/15 VUs  1m03.9s/1m30s  5.00 iters/s
+queue_monitor   [  53% ] 1 VUs      1m03.9s/2m0s  
+
+running (1m05.0s), 02/16 VUs, 345 complete and 0 interrupted iterations
+order_flow      [  72% ] 01/15 VUs  1m04.9s/1m30s  5.00 iters/s
+queue_monitor   [  54% ] 1 VUs      1m04.9s/2m0s  
+
+running (1m06.0s), 02/16 VUs, 350 complete and 0 interrupted iterations
+order_flow      [  73% ] 01/15 VUs  1m05.9s/1m30s  5.00 iters/s
+queue_monitor   [  55% ] 1 VUs      1m05.9s/2m0s  
+time="2026-05-05T22:21:13+07:00" level=info msg="[2026-05-05T15:21:13.884Z] payment.process.q: 691 msgs" source=console
+time="2026-05-05T22:21:13+07:00" level=info msg="[2026-05-05T15:21:13.887Z] inventory.reserve.q: 4 msgs" source=console
+
+running (1m07.0s), 02/16 VUs, 356 complete and 0 interrupted iterations
+order_flow      [  74% ] 01/15 VUs  1m06.9s/1m30s  5.00 iters/s
+queue_monitor   [  56% ] 1 VUs      1m06.9s/2m0s  
+
+running (1m08.0s), 02/16 VUs, 361 complete and 0 interrupted iterations
+order_flow      [  75% ] 01/15 VUs  1m07.9s/1m30s  5.00 iters/s
+queue_monitor   [  57% ] 1 VUs      1m07.9s/2m0s  
+
+running (1m09.0s), 02/16 VUs, 366 complete and 0 interrupted iterations
+order_flow      [  77% ] 01/15 VUs  1m08.9s/1m30s  5.00 iters/s
+queue_monitor   [  57% ] 1 VUs      1m08.9s/2m0s  
+time="2026-05-05T22:21:16+07:00" level=info msg="[2026-05-05T15:21:16.891Z] payment.process.q: 703 msgs" source=console
+time="2026-05-05T22:21:16+07:00" level=info msg="[2026-05-05T15:21:16.893Z] inventory.reserve.q: 4 msgs" source=console
+
+running (1m10.0s), 02/16 VUs, 372 complete and 0 interrupted iterations
+order_flow      [  78% ] 01/15 VUs  1m09.9s/1m30s  5.00 iters/s
+queue_monitor   [  58% ] 1 VUs      1m09.9s/2m0s  
+
+running (1m11.0s), 02/16 VUs, 377 complete and 0 interrupted iterations
+order_flow      [  79% ] 01/15 VUs  1m10.9s/1m30s  5.00 iters/s
+queue_monitor   [  59% ] 1 VUs      1m10.9s/2m0s  
+
+running (1m12.0s), 03/16 VUs, 381 complete and 0 interrupted iterations
+order_flow      [  80% ] 02/15 VUs  1m11.9s/1m30s  5.00 iters/s
+queue_monitor   [  60% ] 1 VUs      1m11.9s/2m0s  
+time="2026-05-05T22:21:19+07:00" level=info msg="[2026-05-05T15:21:19.897Z] payment.process.q: 703 msgs" source=console
+time="2026-05-05T22:21:19+07:00" level=info msg="[2026-05-05T15:21:19.902Z] inventory.reserve.q: 4 msgs" source=console
+
+running (1m13.0s), 02/16 VUs, 388 complete and 0 interrupted iterations
+order_flow      [  81% ] 01/15 VUs  1m12.9s/1m30s  5.00 iters/s
+queue_monitor   [  61% ] 1 VUs      1m12.9s/2m0s  
+
+running (1m14.0s), 02/16 VUs, 393 complete and 0 interrupted iterations
+order_flow      [  82% ] 01/15 VUs  1m13.9s/1m30s  5.00 iters/s
+queue_monitor   [  62% ] 1 VUs      1m13.9s/2m0s  
+
+running (1m15.0s), 02/16 VUs, 398 complete and 0 interrupted iterations
+order_flow      [  83% ] 01/15 VUs  1m14.9s/1m30s  5.00 iters/s
+queue_monitor   [  62% ] 1 VUs      1m14.9s/2m0s  
+time="2026-05-05T22:21:22+07:00" level=info msg="[2026-05-05T15:21:22.907Z] payment.process.q: 716 msgs" source=console
+time="2026-05-05T22:21:22+07:00" level=info msg="[2026-05-05T15:21:22.910Z] inventory.reserve.q: 1 msgs" source=console
+
+running (1m16.0s), 02/16 VUs, 404 complete and 0 interrupted iterations
+order_flow      [  84% ] 01/15 VUs  1m15.9s/1m30s  5.00 iters/s
+queue_monitor   [  63% ] 1 VUs      1m15.9s/2m0s  
+
+running (1m17.0s), 02/16 VUs, 409 complete and 0 interrupted iterations
+order_flow      [  85% ] 01/15 VUs  1m16.9s/1m30s  5.00 iters/s
+queue_monitor   [  64% ] 1 VUs      1m16.9s/2m0s  
+
+running (1m18.0s), 02/16 VUs, 414 complete and 0 interrupted iterations
+order_flow      [  87% ] 01/15 VUs  1m17.9s/1m30s  5.00 iters/s
+queue_monitor   [  65% ] 1 VUs      1m17.9s/2m0s  
+time="2026-05-05T22:21:25+07:00" level=info msg="[2026-05-05T15:21:25.914Z] payment.process.q: 716 msgs" source=console
+time="2026-05-05T22:21:25+07:00" level=info msg="[2026-05-05T15:21:25.916Z] inventory.reserve.q: 1 msgs" source=console
+
+running (1m19.0s), 02/16 VUs, 420 complete and 0 interrupted iterations
+order_flow      [  88% ] 01/15 VUs  1m18.9s/1m30s  5.00 iters/s
+queue_monitor   [  66% ] 1 VUs      1m18.9s/2m0s  
+
+running (1m20.0s), 02/16 VUs, 425 complete and 0 interrupted iterations
+order_flow      [  89% ] 01/15 VUs  1m19.9s/1m30s  5.00 iters/s
+queue_monitor   [  67% ] 1 VUs      1m19.9s/2m0s  
+
+running (1m21.0s), 02/16 VUs, 430 complete and 0 interrupted iterations
+order_flow      [  90% ] 01/15 VUs  1m20.9s/1m30s  5.00 iters/s
+queue_monitor   [  67% ] 1 VUs      1m20.9s/2m0s  
+time="2026-05-05T22:21:28+07:00" level=info msg="[2026-05-05T15:21:28.920Z] payment.process.q: 723 msgs" source=console
+time="2026-05-05T22:21:28+07:00" level=info msg="[2026-05-05T15:21:28.922Z] inventory.reserve.q: 1 msgs" source=console
+
+running (1m22.0s), 02/16 VUs, 436 complete and 0 interrupted iterations
+order_flow      [  91% ] 01/15 VUs  1m21.9s/1m30s  5.00 iters/s
+queue_monitor   [  68% ] 1 VUs      1m21.9s/2m0s  
+
+running (1m23.0s), 02/16 VUs, 441 complete and 0 interrupted iterations
+order_flow      [  92% ] 01/15 VUs  1m22.9s/1m30s  5.00 iters/s
+queue_monitor   [  69% ] 1 VUs      1m22.9s/2m0s  
+
+running (1m24.0s), 02/16 VUs, 446 complete and 0 interrupted iterations
+order_flow      [  93% ] 01/15 VUs  1m23.9s/1m30s  5.00 iters/s
+queue_monitor   [  70% ] 1 VUs      1m23.9s/2m0s  
+time="2026-05-05T22:21:31+07:00" level=info msg="[2026-05-05T15:21:31.925Z] payment.process.q: 729 msgs" source=console
+time="2026-05-05T22:21:31+07:00" level=info msg="[2026-05-05T15:21:31.927Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m25.0s), 02/16 VUs, 452 complete and 0 interrupted iterations
+order_flow      [  94% ] 01/15 VUs  1m24.9s/1m30s  5.00 iters/s
+queue_monitor   [  71% ] 1 VUs      1m24.9s/2m0s  
+
+running (1m26.0s), 02/16 VUs, 457 complete and 0 interrupted iterations
+order_flow      [  95% ] 01/15 VUs  1m25.9s/1m30s  5.00 iters/s
+queue_monitor   [  72% ] 1 VUs      1m25.9s/2m0s  
+
+running (1m27.0s), 02/16 VUs, 462 complete and 0 interrupted iterations
+order_flow      [  97% ] 01/15 VUs  1m26.9s/1m30s  5.00 iters/s
+queue_monitor   [  72% ] 1 VUs      1m26.9s/2m0s  
+time="2026-05-05T22:21:34+07:00" level=info msg="[2026-05-05T15:21:34.930Z] payment.process.q: 729 msgs" source=console
+time="2026-05-05T22:21:34+07:00" level=info msg="[2026-05-05T15:21:34.933Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m28.0s), 02/16 VUs, 468 complete and 0 interrupted iterations
+order_flow      [  98% ] 01/15 VUs  1m27.9s/1m30s  5.00 iters/s
+queue_monitor   [  73% ] 1 VUs      1m27.9s/2m0s  
+
+running (1m29.0s), 02/16 VUs, 473 complete and 0 interrupted iterations
+order_flow      [  99% ] 01/15 VUs  1m28.9s/1m30s  5.00 iters/s
+queue_monitor   [  74% ] 1 VUs      1m28.9s/2m0s  
+
+running (1m30.0s), 02/16 VUs, 478 complete and 0 interrupted iterations
+order_flow      [ 100% ] 01/15 VUs  1m29.9s/1m30s  5.00 iters/s
+queue_monitor   [  75% ] 1 VUs      1m29.9s/2m0s  
+time="2026-05-05T22:21:37+07:00" level=info msg="[2026-05-05T15:21:37.936Z] payment.process.q: 744 msgs" source=console
+time="2026-05-05T22:21:37+07:00" level=info msg="[2026-05-05T15:21:37.938Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m31.0s), 01/16 VUs, 481 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  76% ] 1 VUs      1m30.9s/2m0s
+
+running (1m32.0s), 01/16 VUs, 481 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  77% ] 1 VUs      1m31.9s/2m0s
+
+running (1m33.0s), 01/16 VUs, 481 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  77% ] 1 VUs      1m32.9s/2m0s
+time="2026-05-05T22:21:40+07:00" level=info msg="[2026-05-05T15:21:40.942Z] payment.process.q: 744 msgs" source=console
+time="2026-05-05T22:21:40+07:00" level=info msg="[2026-05-05T15:21:40.945Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m34.0s), 01/16 VUs, 482 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  78% ] 1 VUs      1m33.9s/2m0s
+
+running (1m35.0s), 01/16 VUs, 482 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  79% ] 1 VUs      1m34.9s/2m0s
+
+running (1m36.0s), 01/16 VUs, 482 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  80% ] 1 VUs      1m35.9s/2m0s
+time="2026-05-05T22:21:43+07:00" level=info msg="[2026-05-05T15:21:43.948Z] payment.process.q: 750 msgs" source=console
+time="2026-05-05T22:21:43+07:00" level=info msg="[2026-05-05T15:21:43.950Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m37.0s), 01/16 VUs, 483 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  81% ] 1 VUs      1m36.9s/2m0s
+
+running (1m38.0s), 01/16 VUs, 483 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  82% ] 1 VUs      1m37.9s/2m0s
+
+running (1m39.0s), 01/16 VUs, 483 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  82% ] 1 VUs      1m38.9s/2m0s
+time="2026-05-05T22:21:46+07:00" level=info msg="[2026-05-05T15:21:46.956Z] payment.process.q: 740 msgs" source=console
+time="2026-05-05T22:21:46+07:00" level=info msg="[2026-05-05T15:21:46.960Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m40.0s), 01/16 VUs, 484 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  83% ] 1 VUs      1m39.9s/2m0s
+
+running (1m41.0s), 01/16 VUs, 484 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  84% ] 1 VUs      1m40.9s/2m0s
+
+running (1m42.0s), 01/16 VUs, 484 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  85% ] 1 VUs      1m41.9s/2m0s
+time="2026-05-05T22:21:49+07:00" level=info msg="[2026-05-05T15:21:49.964Z] payment.process.q: 740 msgs" source=console
+time="2026-05-05T22:21:49+07:00" level=info msg="[2026-05-05T15:21:49.967Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m43.0s), 01/16 VUs, 485 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  86% ] 1 VUs      1m42.9s/2m0s
+
+running (1m44.0s), 01/16 VUs, 485 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  87% ] 1 VUs      1m43.9s/2m0s
+
+running (1m45.0s), 01/16 VUs, 485 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  87% ] 1 VUs      1m44.9s/2m0s
+time="2026-05-05T22:21:52+07:00" level=info msg="[2026-05-05T15:21:52.971Z] payment.process.q: 730 msgs" source=console
+time="2026-05-05T22:21:52+07:00" level=info msg="[2026-05-05T15:21:52.974Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m46.0s), 01/16 VUs, 486 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  88% ] 1 VUs      1m45.9s/2m0s
+
+running (1m47.0s), 01/16 VUs, 486 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  89% ] 1 VUs      1m46.9s/2m0s
+
+running (1m48.0s), 01/16 VUs, 486 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  90% ] 1 VUs      1m47.9s/2m0s
+time="2026-05-05T22:21:55+07:00" level=info msg="[2026-05-05T15:21:55.978Z] payment.process.q: 730 msgs" source=console
+time="2026-05-05T22:21:55+07:00" level=info msg="[2026-05-05T15:21:55.981Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m49.0s), 01/16 VUs, 487 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  91% ] 1 VUs      1m48.9s/2m0s
+
+running (1m50.0s), 01/16 VUs, 487 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  92% ] 1 VUs      1m49.9s/2m0s
+
+running (1m51.0s), 01/16 VUs, 487 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  92% ] 1 VUs      1m50.9s/2m0s
+time="2026-05-05T22:21:58+07:00" level=info msg="[2026-05-05T15:21:58.985Z] payment.process.q: 720 msgs" source=console
+time="2026-05-05T22:21:58+07:00" level=info msg="[2026-05-05T15:21:58.987Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m52.0s), 01/16 VUs, 488 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  93% ] 1 VUs      1m51.9s/2m0s
+
+running (1m53.0s), 01/16 VUs, 488 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  94% ] 1 VUs      1m52.9s/2m0s
+
+running (1m54.0s), 01/16 VUs, 488 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  95% ] 1 VUs      1m53.9s/2m0s
+time="2026-05-05T22:22:01+07:00" level=info msg="[2026-05-05T15:22:01.991Z] payment.process.q: 710 msgs" source=console
+time="2026-05-05T22:22:01+07:00" level=info msg="[2026-05-05T15:22:01.993Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m55.0s), 01/16 VUs, 489 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  96% ] 1 VUs      1m54.9s/2m0s
+
+running (1m56.0s), 01/16 VUs, 489 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  97% ] 1 VUs      1m55.9s/2m0s
+
+running (1m57.0s), 01/16 VUs, 489 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  97% ] 1 VUs      1m56.9s/2m0s
+time="2026-05-05T22:22:04+07:00" level=info msg="[2026-05-05T15:22:04.997Z] payment.process.q: 710 msgs" source=console
+time="2026-05-05T22:22:04+07:00" level=info msg="[2026-05-05T15:22:04.999Z] inventory.reserve.q: 0 msgs" source=console
+
+running (1m58.0s), 01/16 VUs, 490 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  98% ] 1 VUs      1m57.9s/2m0s
+
+running (1m59.0s), 01/16 VUs, 490 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [  99% ] 1 VUs      1m58.9s/2m0s
+
+running (2m00.0s), 01/16 VUs, 490 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor   [ 100% ] 1 VUs      1m59.9s/2m0s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 451     3.744176/s
+    checks_succeeded...: 100.00% 451 out of 451
+    checks_failed......: 0.00%   0 out of 451
+
+    ✓ order: 202 accepted
+
+    CUSTOM
+    order_create_latency...........: avg=63.09ms  min=10.99ms med=17.01ms max=1.37s p(90)=39.11ms  p(95)=344.47ms
+    order_errors...................: 0.00%  0 out of 451
+    payment_queue_depth............: avg=646.7    min=509     med=665.5   max=750   p(90)=740      p(95)=744     
+
+    HTTP
+    http_req_duration..............: avg=54.2ms   min=1.59ms  med=15.39ms max=1.37s p(90)=36.75ms  p(95)=190.4ms 
+      { expected_response:true }...: avg=54.2ms   min=1.59ms  med=15.39ms max=1.37s p(90)=36.75ms  p(95)=190.4ms 
+    http_req_failed................: 0.00%  0 out of 532
+    http_reqs......................: 532    4.416633/s
+
+    EXECUTION
+    iteration_duration.............: avg=349.55ms min=61.69ms med=68.16ms max=3.02s p(90)=881.07ms p(95)=3s      
+    iterations.....................: 491    4.076253/s
+    vus............................: 1      min=1        max=7 
+    vus_max........................: 16     min=16       max=16
+
+    NETWORK
+    data_received..................: 525 kB 4.4 kB/s
+    data_sent......................: 191 kB 1.6 kB/s
+
+
+
+
+running (2m00.5s), 00/16 VUs, 491 complete and 0 interrupted iterations
+order_flow    ✓ [ 100% ] 00/15 VUs  1m30s  5.00 iters/s
+queue_monitor ✓ [ 100% ] 1 VUs      2m0s  

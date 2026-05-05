@@ -1,0 +1,132 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: experiments/05-idempotency.js
+        output: json (results/05-idempotency.json)
+
+     scenarios: (100.00%) 2 scenarios, 20 max VUs, 10m45s max duration (incl. graceful stop):
+              * idempotency_async: 5 iterations for each of 10 VUs (maxDuration: 10m0s, exec: asyncIdempotency, gracefulStop: 30s)
+              * idempotency_sync: 5 iterations for each of 10 VUs (maxDuration: 10m0s, exec: syncIdempotency, startTime: 15s, gracefulStop: 30s)
+
+
+running (00m00.9s), 10/20 VUs, 0 complete and 0 interrupted iterations
+idempotency_async   [   0% ] 10 VUs   00m00.7s/10m0s  00/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  14.3s          
+
+running (00m01.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  13.3s          
+
+running (00m02.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  12.3s          
+
+running (00m03.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  11.3s          
+
+running (00m04.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  10.3s          
+
+running (00m05.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  09.3s          
+
+running (00m06.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  08.3s          
+
+running (00m07.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  07.3s          
+
+running (00m08.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  06.3s          
+
+running (00m09.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  05.3s          
+
+running (00m10.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  04.3s          
+
+running (00m11.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  03.3s          
+
+running (00m12.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  02.3s          
+
+running (00m13.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  01.3s          
+
+running (00m14.9s), 00/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs   00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  • [   0% ] waiting  00.3s          
+
+running (00m15.9s), 10/20 VUs, 50 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs  00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync    [   0% ] 10 VUs  00m00.7s/10m0s  00/50 iters, 5 per VU
+
+running (00m16.9s), 08/20 VUs, 76 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs  00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync    [  52% ] 10 VUs  00m01.7s/10m0s  26/50 iters, 5 per VU
+
+running (00m17.9s), 08/20 VUs, 84 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs  00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync    [  68% ] 10 VUs  00m02.7s/10m0s  34/50 iters, 5 per VU
+
+
+  █ THRESHOLDS 
+
+    idempotency_failures
+    ✓ 'rate<0.01' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 100     5.307731/s
+    checks_succeeded...: 100.00% 100 out of 100
+    checks_failed......: 0.00%   0 out of 100
+
+    ✓ async idemp: 202
+    ✓ sync idemp: 200
+
+    CUSTOM
+    duplicates_detected............: 80    4.246185/s
+    idempotency_failures...........: 0.00% 0 out of 0
+    unique_orders_created..........: 20    1.061546/s
+
+    HTTP
+    http_req_duration..............: avg=324.36ms min=8.84ms   med=556.05ms max=710.21ms p(90)=637.36ms p(95)=652.83ms
+      { expected_response:true }...: avg=324.36ms min=8.84ms   med=556.05ms max=710.21ms p(90)=637.36ms p(95)=652.83ms
+    http_req_failed................: 0.00% 0 out of 101
+    http_reqs......................: 101   5.360808/s
+
+    EXECUTION
+    iteration_duration.............: avg=426.42ms min=109.02ms med=657.22ms max=812.3ms  p(90)=739.37ms p(95)=754.1ms 
+    iterations.....................: 100   5.307731/s
+    vus............................: 8     min=0        max=10
+    vus_max........................: 20    min=20       max=20
+
+    NETWORK
+    data_received..................: 77 kB 4.1 kB/s
+    data_sent......................: 46 kB 2.4 kB/s
+
+
+
+
+running (00m18.8s), 00/20 VUs, 100 complete and 0 interrupted iterations
+idempotency_async ✓ [ 100% ] 10 VUs  00m01.3s/10m0s  50/50 iters, 5 per VU
+idempotency_sync  ✓ [ 100% ] 10 VUs  00m03.6s/10m0s  50/50 iters, 5 per VU

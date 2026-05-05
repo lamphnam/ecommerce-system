@@ -50,8 +50,6 @@ build/
 .vscode/
 
 
-docs/
-
 mvnw
 mvnw.cmd
 .mvn/

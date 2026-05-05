@@ -22,10 +22,14 @@ This directory contains k6 load test scripts that prove asynchronous RabbitMQ me
    ```bash
    curl -X POST http://localhost:8080/api/auth/register \
      -H 'Content-Type: application/json' \
-     -d '{"email":"test@techlab.com","password":"password123","name":"Test User"}'
+     -d '{"username":"testuser","password":"password123","displayName":"Test User"}'
    ```
 
 5. **Install k6:** https://k6.io/docs/getting-started/installation/
+
+6. **Set k6 login credentials** if you use `login()`:
+   - `K6_USERNAME` (default: `testuser`)
+   - `K6_PASSWORD` (default: `password123`)
 
 ## Environment Variables
 

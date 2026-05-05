@@ -62,7 +62,7 @@ export default function (data) {
     sleep(0.1);
 }
 
-export function checkDlq() {
+export function checkDlq(data) {
     // Poll RabbitMQ management API for DLQ depth
     const dlqNames = [
         'payment.process.dlq',
@@ -86,11 +86,11 @@ export function checkDlq() {
     }
 
     // Also check order statuses via API
-    const headers = authHeaders(null);
+    const headers = authHeaders(data.token);
     const ordersRes = http.get(`${GATEWAY}/api/orders?status=FAILED&size=5`, { headers });
     if (ordersRes.status === 200) {
         const body = JSON.parse(ordersRes.body);
-        const failedCount = body.data?.length || 0;
+        const failedCount = body.data?.content?.length || 0;
         console.log(`Orders in FAILED status: ${failedCount}`);
         ordersFailed.add(failedCount);
     }

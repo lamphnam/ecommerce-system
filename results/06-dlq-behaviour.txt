@@ -1,0 +1,471 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: experiments/06-dlq-behaviour.js
+        output: json (results/06-dlq-behaviour.json)
+
+     scenarios: (100.00%) 2 scenarios, 21 max VUs, 2m5s max duration (incl. graceful stop):
+              * dlq_test: 3.00 iterations/s for 30s (maxVUs: 10-20, gracefulStop: 30s)
+              * check_dlq: 1 looping VUs for 1m0s (exec: checkDlq, startTime: 35s, gracefulStop: 30s)
+
+
+running (0m01.0s), 00/11 VUs, 3 complete and 0 interrupted iterations
+dlq_test    [   3% ] 00/10 VUs  00.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    34.1s     
+
+running (0m02.0s), 00/11 VUs, 6 complete and 0 interrupted iterations
+dlq_test    [   6% ] 00/10 VUs  01.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    33.1s     
+
+running (0m03.0s), 00/11 VUs, 9 complete and 0 interrupted iterations
+dlq_test    [  10% ] 00/10 VUs  02.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    32.1s     
+
+running (0m04.0s), 00/11 VUs, 12 complete and 0 interrupted iterations
+dlq_test    [  13% ] 00/10 VUs  03.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    31.1s     
+
+running (0m05.0s), 00/11 VUs, 15 complete and 0 interrupted iterations
+dlq_test    [  16% ] 00/10 VUs  04.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    30.1s     
+
+running (0m06.0s), 00/11 VUs, 18 complete and 0 interrupted iterations
+dlq_test    [  20% ] 00/10 VUs  05.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    29.1s     
+
+running (0m07.0s), 00/11 VUs, 21 complete and 0 interrupted iterations
+dlq_test    [  23% ] 00/10 VUs  06.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    28.1s     
+
+running (0m08.0s), 00/11 VUs, 24 complete and 0 interrupted iterations
+dlq_test    [  26% ] 00/10 VUs  07.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    27.1s     
+
+running (0m09.0s), 00/11 VUs, 27 complete and 0 interrupted iterations
+dlq_test    [  30% ] 00/10 VUs  08.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    26.1s     
+
+running (0m10.0s), 00/11 VUs, 30 complete and 0 interrupted iterations
+dlq_test    [  33% ] 00/10 VUs  09.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    25.1s     
+
+running (0m11.0s), 00/11 VUs, 33 complete and 0 interrupted iterations
+dlq_test    [  36% ] 00/10 VUs  10.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    24.1s     
+
+running (0m12.0s), 00/11 VUs, 36 complete and 0 interrupted iterations
+dlq_test    [  40% ] 00/10 VUs  11.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    23.1s     
+
+running (0m13.0s), 00/11 VUs, 39 complete and 0 interrupted iterations
+dlq_test    [  43% ] 00/10 VUs  12.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    22.1s     
+
+running (0m14.0s), 00/11 VUs, 42 complete and 0 interrupted iterations
+dlq_test    [  46% ] 00/10 VUs  13.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    21.1s     
+
+running (0m15.0s), 00/11 VUs, 45 complete and 0 interrupted iterations
+dlq_test    [  50% ] 00/10 VUs  14.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    20.1s     
+
+running (0m16.0s), 00/11 VUs, 48 complete and 0 interrupted iterations
+dlq_test    [  53% ] 00/10 VUs  15.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    19.1s     
+
+running (0m17.0s), 00/11 VUs, 51 complete and 0 interrupted iterations
+dlq_test    [  56% ] 00/10 VUs  16.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    18.1s     
+
+running (0m18.0s), 00/11 VUs, 54 complete and 0 interrupted iterations
+dlq_test    [  60% ] 00/10 VUs  17.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    17.1s     
+
+running (0m19.0s), 00/11 VUs, 57 complete and 0 interrupted iterations
+dlq_test    [  63% ] 00/10 VUs  18.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    16.1s     
+
+running (0m20.0s), 00/11 VUs, 60 complete and 0 interrupted iterations
+dlq_test    [  66% ] 00/10 VUs  19.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    15.1s     
+
+running (0m21.0s), 00/11 VUs, 63 complete and 0 interrupted iterations
+dlq_test    [  70% ] 00/10 VUs  20.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    14.1s     
+
+running (0m22.0s), 00/11 VUs, 66 complete and 0 interrupted iterations
+dlq_test    [  73% ] 00/10 VUs  21.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    13.1s     
+
+running (0m23.0s), 00/11 VUs, 69 complete and 0 interrupted iterations
+dlq_test    [  76% ] 00/10 VUs  22.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    12.1s     
+
+running (0m24.0s), 00/11 VUs, 72 complete and 0 interrupted iterations
+dlq_test    [  80% ] 00/10 VUs  23.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    11.1s     
+
+running (0m25.0s), 00/11 VUs, 75 complete and 0 interrupted iterations
+dlq_test    [  83% ] 00/10 VUs  24.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    10.1s     
+
+running (0m26.0s), 00/11 VUs, 78 complete and 0 interrupted iterations
+dlq_test    [  86% ] 00/10 VUs  25.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    09.1s     
+
+running (0m27.0s), 00/11 VUs, 81 complete and 0 interrupted iterations
+dlq_test    [  90% ] 00/10 VUs  26.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    08.1s     
+
+running (0m28.0s), 00/11 VUs, 84 complete and 0 interrupted iterations
+dlq_test    [  93% ] 00/10 VUs  27.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    07.1s     
+
+running (0m29.0s), 00/11 VUs, 87 complete and 0 interrupted iterations
+dlq_test    [  96% ] 00/10 VUs  28.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    06.1s     
+
+running (0m30.0s), 00/11 VUs, 90 complete and 0 interrupted iterations
+dlq_test    [ 100% ] 00/10 VUs  29.9s/30s  3.00 iters/s
+check_dlq • [   0% ] waiting    05.1s     
+
+running (0m31.0s), 00/11 VUs, 91 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq • [   0% ] waiting    04.1s
+
+running (0m32.0s), 00/11 VUs, 91 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq • [   0% ] waiting    03.1s
+
+running (0m33.0s), 00/11 VUs, 91 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq • [   0% ] waiting    02.1s
+
+running (0m34.0s), 00/11 VUs, 91 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq • [   0% ] waiting    01.1s
+
+running (0m35.0s), 00/11 VUs, 91 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq • [   0% ] waiting    00.1s
+time="2026-05-05T22:19:06+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:19:06+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:19:06+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (0m36.0s), 01/11 VUs, 91 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [   1% ] 1 VUs      0m00.9s/1m0s
+
+running (0m37.0s), 01/11 VUs, 91 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [   3% ] 1 VUs      0m01.9s/1m0s
+
+running (0m38.0s), 01/11 VUs, 91 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [   5% ] 1 VUs      0m02.9s/1m0s
+
+running (0m39.0s), 01/11 VUs, 91 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [   6% ] 1 VUs      0m03.9s/1m0s
+
+running (0m40.0s), 01/11 VUs, 91 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [   8% ] 1 VUs      0m04.9s/1m0s
+time="2026-05-05T22:19:11+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:19:11+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:19:11+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (0m41.0s), 01/11 VUs, 92 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  10% ] 1 VUs      0m05.9s/1m0s
+
+running (0m42.0s), 01/11 VUs, 92 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  11% ] 1 VUs      0m06.9s/1m0s
+
+running (0m43.0s), 01/11 VUs, 92 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  13% ] 1 VUs      0m07.9s/1m0s
+
+running (0m44.0s), 01/11 VUs, 92 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  15% ] 1 VUs      0m08.9s/1m0s
+
+running (0m45.0s), 01/11 VUs, 92 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  16% ] 1 VUs      0m09.9s/1m0s
+time="2026-05-05T22:19:16+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:19:16+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:19:16+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (0m46.0s), 01/11 VUs, 93 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  18% ] 1 VUs      0m10.9s/1m0s
+
+running (0m47.0s), 01/11 VUs, 93 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  20% ] 1 VUs      0m11.9s/1m0s
+
+running (0m48.0s), 01/11 VUs, 93 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  21% ] 1 VUs      0m12.9s/1m0s
+
+running (0m49.0s), 01/11 VUs, 93 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  23% ] 1 VUs      0m13.9s/1m0s
+
+running (0m50.0s), 01/11 VUs, 93 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  25% ] 1 VUs      0m14.9s/1m0s
+time="2026-05-05T22:19:21+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:19:21+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:19:21+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (0m51.0s), 01/11 VUs, 94 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  26% ] 1 VUs      0m15.9s/1m0s
+
+running (0m52.0s), 01/11 VUs, 94 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  28% ] 1 VUs      0m16.9s/1m0s
+
+running (0m53.0s), 01/11 VUs, 94 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  30% ] 1 VUs      0m17.9s/1m0s
+
+running (0m54.0s), 01/11 VUs, 94 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  31% ] 1 VUs      0m18.9s/1m0s
+
+running (0m55.0s), 01/11 VUs, 94 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  33% ] 1 VUs      0m19.9s/1m0s
+time="2026-05-05T22:19:26+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:19:26+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:19:26+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (0m56.0s), 01/11 VUs, 95 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  35% ] 1 VUs      0m20.9s/1m0s
+
+running (0m57.0s), 01/11 VUs, 95 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  36% ] 1 VUs      0m21.9s/1m0s
+
+running (0m58.0s), 01/11 VUs, 95 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  38% ] 1 VUs      0m22.9s/1m0s
+
+running (0m59.0s), 01/11 VUs, 95 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  40% ] 1 VUs      0m23.9s/1m0s
+
+running (1m00.0s), 01/11 VUs, 95 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  41% ] 1 VUs      0m24.9s/1m0s
+time="2026-05-05T22:19:31+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:19:31+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:19:31+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (1m01.0s), 01/11 VUs, 96 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  43% ] 1 VUs      0m25.9s/1m0s
+
+running (1m02.0s), 01/11 VUs, 96 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  45% ] 1 VUs      0m26.9s/1m0s
+
+running (1m03.0s), 01/11 VUs, 96 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  46% ] 1 VUs      0m27.9s/1m0s
+
+running (1m04.0s), 01/11 VUs, 96 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  48% ] 1 VUs      0m28.9s/1m0s
+
+running (1m05.0s), 01/11 VUs, 96 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  50% ] 1 VUs      0m29.9s/1m0s
+time="2026-05-05T22:19:36+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:19:36+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:19:36+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (1m06.0s), 01/11 VUs, 97 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  51% ] 1 VUs      0m30.9s/1m0s
+
+running (1m07.0s), 01/11 VUs, 97 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  53% ] 1 VUs      0m31.9s/1m0s
+
+running (1m08.0s), 01/11 VUs, 97 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  55% ] 1 VUs      0m32.9s/1m0s
+
+running (1m09.0s), 01/11 VUs, 97 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  56% ] 1 VUs      0m33.9s/1m0s
+
+running (1m10.0s), 01/11 VUs, 97 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  58% ] 1 VUs      0m34.9s/1m0s
+time="2026-05-05T22:19:41+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:19:41+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:19:41+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (1m11.0s), 01/11 VUs, 98 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  60% ] 1 VUs      0m35.9s/1m0s
+
+running (1m12.0s), 01/11 VUs, 98 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  61% ] 1 VUs      0m36.9s/1m0s
+
+running (1m13.0s), 01/11 VUs, 98 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  63% ] 1 VUs      0m37.9s/1m0s
+
+running (1m14.0s), 01/11 VUs, 98 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  65% ] 1 VUs      0m38.9s/1m0s
+
+running (1m15.0s), 01/11 VUs, 98 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  66% ] 1 VUs      0m39.9s/1m0s
+time="2026-05-05T22:19:46+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:19:46+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:19:47+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (1m16.0s), 01/11 VUs, 99 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  68% ] 1 VUs      0m40.9s/1m0s
+
+running (1m17.0s), 01/11 VUs, 99 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  70% ] 1 VUs      0m41.9s/1m0s
+
+running (1m18.0s), 01/11 VUs, 99 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  71% ] 1 VUs      0m42.9s/1m0s
+
+running (1m19.0s), 01/11 VUs, 99 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  73% ] 1 VUs      0m43.9s/1m0s
+
+running (1m20.0s), 01/11 VUs, 99 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  75% ] 1 VUs      0m44.9s/1m0s
+time="2026-05-05T22:19:52+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:19:52+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:19:52+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (1m21.0s), 01/11 VUs, 100 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  76% ] 1 VUs      0m45.9s/1m0s
+
+running (1m22.0s), 01/11 VUs, 100 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  78% ] 1 VUs      0m46.9s/1m0s
+
+running (1m23.0s), 01/11 VUs, 100 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  80% ] 1 VUs      0m47.9s/1m0s
+
+running (1m24.0s), 01/11 VUs, 100 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  81% ] 1 VUs      0m48.9s/1m0s
+
+running (1m25.0s), 01/11 VUs, 100 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  83% ] 1 VUs      0m49.9s/1m0s
+time="2026-05-05T22:19:57+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:19:57+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:19:57+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (1m26.0s), 01/11 VUs, 101 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  85% ] 1 VUs      0m50.9s/1m0s
+
+running (1m27.0s), 01/11 VUs, 101 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  86% ] 1 VUs      0m51.9s/1m0s
+
+running (1m28.0s), 01/11 VUs, 101 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  88% ] 1 VUs      0m52.9s/1m0s
+
+running (1m29.0s), 01/11 VUs, 101 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  90% ] 1 VUs      0m53.9s/1m0s
+
+running (1m30.0s), 01/11 VUs, 101 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  91% ] 1 VUs      0m54.9s/1m0s
+time="2026-05-05T22:20:02+07:00" level=info msg="DLQ payment.process.dlq: 0 messages" source=console
+time="2026-05-05T22:20:02+07:00" level=info msg="DLQ order.payment-failed.dlq: 0 messages" source=console
+time="2026-05-05T22:20:02+07:00" level=info msg="Orders in FAILED status: 0" source=console
+
+running (1m31.0s), 01/11 VUs, 102 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  93% ] 1 VUs      0m55.9s/1m0s
+
+running (1m32.0s), 01/11 VUs, 102 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  95% ] 1 VUs      0m56.9s/1m0s
+
+running (1m33.0s), 01/11 VUs, 102 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  96% ] 1 VUs      0m57.9s/1m0s
+
+running (1m34.0s), 01/11 VUs, 102 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [  98% ] 1 VUs      0m58.9s/1m0s
+
+running (1m35.0s), 01/11 VUs, 102 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq   [ 100% ] 1 VUs      0m59.9s/1m0s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 115     1.204584/s
+    checks_succeeded...: 100.00% 115 out of 115
+    checks_failed......: 0.00%   0 out of 115
+
+    ✓ order created: 202
+    ✓ payment.process.dlq has messages
+    ✓ order.payment-failed.dlq has messages
+
+    CUSTOM
+    order_create_latency...........: avg=17.91ms  min=12.22ms med=16.82ms  max=53.98ms  p(90)=22.95ms p(95)=25.73ms
+    orders_created.................: 91     0.953193/s
+    orders_failed..................: 0      0/s
+
+    HTTP
+    http_req_duration..............: avg=16.14ms  min=1.6ms   med=14.88ms  max=116.61ms p(90)=21.83ms p(95)=29.04ms
+      { expected_response:true }...: avg=16.14ms  min=1.6ms   med=14.88ms  max=116.61ms p(90)=21.83ms p(95)=29.04ms
+    http_req_failed................: 0.00%  0 out of 128
+    http_reqs......................: 128    1.340754/s
+
+    EXECUTION
+    iteration_duration.............: avg=690.71ms min=112.7ms med=118.32ms max=5.11s    p(90)=5.01s   p(95)=5.02s  
+    iterations.....................: 103    1.078888/s
+    vus............................: 1      min=0        max=1 
+    vus_max........................: 11     min=11       max=11
+
+    NETWORK
+    data_received..................: 108 kB 1.1 kB/s
+    data_sent......................: 44 kB  458 B/s
+
+
+
+
+running (1m35.5s), 00/11 VUs, 103 complete and 0 interrupted iterations
+dlq_test  ✓ [ 100% ] 00/10 VUs  30s  3.00 iters/s
+check_dlq ✓ [ 100% ] 1 VUs      1m0s

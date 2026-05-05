@@ -1,7 +1,7 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 import { Counter, Rate } from 'k6/metrics';
-import { orderPayload, authHeaders, GATEWAY, ORDER_URL, login } from './helpers.js';
+import { orderPayload, authHeaders, GATEWAY, login } from './helpers.js';
 import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 
 /**

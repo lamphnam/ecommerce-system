@@ -5,7 +5,6 @@ import {
   orderPayload,
   authHeaders,
   GATEWAY,
-  ORDER_URL,
   login,
   think,
 } from "./helpers.js";
@@ -60,8 +59,8 @@ export const options = {
 
 export function setup() {
   // Attempt login; if it fails, tests run without auth (direct to service)
-    const token = login();
-    return { token };
+  const token = login();
+  return { token };
 }
 
 export default function (data) {
